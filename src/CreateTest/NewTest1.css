@@ -1,0 +1,51 @@
+.big_text-NewTest1{
+    width: 100%;
+    height: 100px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    padding: 15px;
+
+}
+.setName-NewTest1{
+    width: 300px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    height: 40px;
+}
+.first-part-newTest{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+.butAddError-newTest{
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    background-color: #FFDD00;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    padding:7px;
+    border: none;
+    width: 100px;
+    height:50px;
+    border-radius: 30px;
+    margin-left: 75%;
+    margin-bottom: 10px;
+}
+.butAddError2{
+    background-color: #FFDD00;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    padding-top: 10px;
+    border: none;
+    width: 100px;
+    height:50px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+}

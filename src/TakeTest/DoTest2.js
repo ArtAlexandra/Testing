@@ -22,7 +22,8 @@ export default function DoTest2({Todos, SetTodos, number, setNumber, markers, se
   function removeError(id){
     SetTodos([...Todos.filter((todo)=>todo.id!==id)])
   }
-  function Clear(){
+  function Clear(e){
+    e.preventDefault()
     
     setNumber(true)
 
@@ -90,7 +91,7 @@ console.log(newItem)
     <Form.Control type="text" placeholder="Номер ошибки" value={n} onChange={(e)=>setN(e.target.value)}/>
     </Col>
     <Col md>
-    <button className='butAddError2'  onClick={()=>{Clear()}} >Записать ошибку</button>
+    <button className='butAddError2'  onClick={(e)=>{Clear(e)}} >Записать ошибку</button>
     </Col>
     
     </Row>

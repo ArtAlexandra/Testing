@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./LookResultTest.css"
 import { useNavigate } from "react-router-dom";
 import "../TakeTest/Form"
 export default function LookResultTest(){
     const navigate = useNavigate(); 
+    const [admin, setAdmin] = useState(true)
     const people = [
+        
+        
         {
             id:0,
             name_test:"Тестировщик 1",
@@ -31,6 +34,7 @@ export default function LookResultTest(){
     ]
     function Table(){
         return(
+            
             people.map((p)=>{
                 return(
                     
@@ -47,7 +51,7 @@ export default function LookResultTest(){
                  
                   <h3 className='Stroka_answer '>{p.status}</h3>
                  
-                  {p.status==="Завершен"? <button disabled>Пройти тест</button>:<button onClick={()=>navigate("/passing")}>Пройти тест</button>}
+                  {p.status==="Завершен"? null:<button onClick={()=>navigate("/passing")}>Пройти тест</button>}
                   </div>
                  
                   <div className='LookResultTest-result_test'>
@@ -86,7 +90,35 @@ export default function LookResultTest(){
         <div className='title'>
         <h1>Доступные тесты</h1>
         </div>
-            {Table()}
+        {people.length === 0 ? <div className='list_test_null-LookResultTest'>
+            <img src="/Pict/Clip path group.png" alt="пока нет тестов"/> 
+            {admin ? 
+            <div className='text-LookResultTest'>
+            <h2>Тестов пока нет</h2>
+            <div className='add_test-LookResultTest' onClick={()=>navigate("/createTest")}>
+            <button >Создать новый </button>
+            <img src="/Pict/Add.png" alt="+"/> 
+            </div>
+    </div> : 
+    <div className='text-people-LookResultTest'>
+            <h1>Доступных тестов пока нет</h1>
+            <h2>Возвращайтесь позже</h2>
+            </div>
+    
+        }
+            
+            
+            
+            {/*}
+            <div className='text-LookResultTest'>
+            <h2>Тестов пока нет</h2>
+            <div className='add_test-LookResultTest' onClick={()=>navigate("/createTest")}>
+            <button >Создать новый </button>
+            <img src="/Pict/Add.png" alt="+"/> 
+            </div>
+    </div>*/}
+            </div>:   Table()}
+          
         </>
     )
 }

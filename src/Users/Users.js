@@ -5,7 +5,15 @@ import "./Users.css"
 import 'reactjs-popup/dist/index.css';
 import AssignTest from './AssignTest';
 import DeletePerson from './DeletePerson';
+import NewPerson from './NewPersone';
 export default function Users(){
+    const [isAdd, setIsAdd] = useState(false)
+    
+    const [name, setName] = useState("")
+   const [email, setEmail] = useState("")
+   const [password, setPassword] = useState("")
+   
+   
     const [isOpen, setIsOpen] = useState(false);
     const [isDelete, setIsDelete] = useState(false)
     const [sort, setSort] = useState(true)
@@ -38,7 +46,7 @@ export default function Users(){
      
    
    const people = [
-    
+    /*
     {
         id:0,
         name: "Горбунов Сергей Тимофеевич",
@@ -87,7 +95,7 @@ export default function Users(){
         email: "androohov@mail.ru",
         list_test : "Тестировщик1",
     },
-    
+    */
    ]
    const [l, setL] = useState(people)
    function Sort(){
@@ -168,8 +176,24 @@ else{
         })
     )
    }
+   function FunctAddPersone(){
+    setIsAdd(!isAdd)
+   
+}
     return(
         <div className='users-Users'>
+            {people.length ===0 ?
+             <div className="list_people_null-Users">
+                <img src="/Pict/Frame 27.png" alt="пока нет пользователей"/> 
+                <h2>Пользователей пока нет</h2>
+                <div className='add_persone-Users' onClick={(e)=>setIsAdd(true)}>
+                <button > Добавить</button>
+                <img src="/Pict/PersonAdd.png" alt="+"/> 
+                </div>
+      {isAdd? <NewPerson setAddPersone={setIsAdd} handleClose={FunctAddPersone} setName={setName} setEmail={setEmail} setPassword={setPassword} setTask={setTask}/>:null}
+
+            </div> : 
+            <>
             <h1>Список пользователей</h1>
         <div className='nav-Users'>
             <div className='find-users-Users'>
@@ -183,7 +207,7 @@ else{
             </div>
           
             
-            <div className='add-Users'>
+            <div className='add-Users' onClick={(e)=>setIsAdd(true)}>
                 <p>Добавить</p>
                 <img src="/Pict/PersonAdd.png" alt='назначить тест'/>
             </div>
@@ -214,12 +238,15 @@ else{
                 </tbody>
             </table>
         </div>
-       
+      
    {isOpen? <AssignTest
       
       handleClose={togglePopup} setTask={setTask}/>:null}
       {isDelete? <DeletePerson handleClose={Delete} setTask={setIsDelete} />:null}
+      {isAdd? <NewPerson setAddPersone={setIsAdd} handleClose={FunctAddPersone} setName={setName} setEmail={setEmail} setPassword={setPassword} setTask={setTask}/>:null}
     
+      </>
+}
         </div>
     )
 }

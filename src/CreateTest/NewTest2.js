@@ -18,8 +18,8 @@ export default function NewTest2({ errorPoint, setErrorPoint, mainText, setMainT
       setData([...Data.filter((todo)=>todo.id!==id)])
     }
    
-    function Clear2(){
-    
+    function Clear2(e){
+      e.preventDefault()
       setNumb(true)
       const newItem2 = {
         id: Math.random().toString(36).substr(2, 9),
@@ -105,7 +105,7 @@ export default function NewTest2({ errorPoint, setErrorPoint, mainText, setMainT
     <Form.Control type="text" placeholder="Номер ошибки" value={n2} onChange={(e)=>setN2(e.target.value)}/>
     </Col>
     <Col md>
-    < button className='butAddError2'  varient="primary" onClick={()=>{Clear2()}} >Записать ошибку</button>
+    < button className='butAddError2'  varient="primary" onClick={(e)=>{Clear2(e)}} >Записать ошибку</button>
     </Col>
     
     </Row>

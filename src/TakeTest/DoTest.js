@@ -22,8 +22,8 @@ export default function DoTest({Todos, SetTodos, number, setNumber, markers, set
   function removeError(id){
     SetTodos([...Todos.filter((todo)=>todo.id!==id)])
   }
-  function Clear(){
-    
+  function Clear(e){
+    e.preventDefault()
     setNumber(true)
 
     if(point.length < n-1 || n-1===-1){
@@ -90,7 +90,7 @@ console.log(newItem)
     <Form.Control type="text" placeholder="Номер ошибки" value={n} onChange={(e)=>setN(e.target.value)}/>
     </Col>
     <Col md>
-    <button className='butAddError2'  onClick={()=>{Clear()}} >Записать ошибку</button>
+    <button className='butAddError2'  onClick={(e)=>{Clear(e)}} >Записать ошибку</button>
     </Col>
     
     </Row>
@@ -106,15 +106,18 @@ console.log(newItem)
    {
             Todos.map((todo)=>{
                 return(
+                  <div>
+                  
                    <Error  
                    error={todo}
                    key={todo.id}
                    removeError = {removeError}
                    />
+                   </div>
                 );
             })
         }
-
+        
   </>:
   
   <h3>Пока что здесь пусто</h3>

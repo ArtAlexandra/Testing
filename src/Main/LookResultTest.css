@@ -10,7 +10,7 @@
 .LookResultTest-general_data{
     background-color: #FFFFFF;
     width: 400px;
-    height: 230px;
+    height: 300px;
     padding: 30px;
     border-radius: 30px;
     margin-right: 40px;
@@ -84,4 +84,43 @@ body{
 .result_test_error{
     font-weight: bold;
     color:#c62c34;
+}
+.add_test-LookResultTest{
+    width: 230px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: #FFDD00;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  
+}
+.add_test-LookResultTest button{
+    background-color: #FFDD00;
+   
+   
+    margin-left: 30px;
+    margin-bottom: -5px;
+    margin-top: 5px;
+    border: none;
+    font-size: 20px;
+}
+.add_test-LookResultTest img{
+    margin-left: -5px;
+    margin-top: -5px;
+}
+.list_test_null-LookResultTest{
+    margin-left: 38%;
+}
+.text-LookResultTest{
+    margin-left: 35px;
+}
+.text-LookResultTest h2{
+    margin-top: 20px;
+}
+.text-people-LookResultTest{
+
+    width: 550px;
+    margin-left: -110px;
+    margin-top: 30px;
+    text-align: center;
 }

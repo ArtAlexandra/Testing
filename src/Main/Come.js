@@ -23,7 +23,7 @@ export default function Come(){
             <input className='InputCome' type="email" placeholder="Электронный адрес"/>
             <input className='InputCome' type="password" placeholder="Пароль"/>
              
-           <p className='link_come' onClick={(e)=>setIsOpen(true)}>Забыли пароль?</p>
+           <p className='link_come' >Забыли пароль?</p>{/*onClick={(e)=>setIsOpen(true)}*/}
            
           <button className="ComeButton" >
               Войти

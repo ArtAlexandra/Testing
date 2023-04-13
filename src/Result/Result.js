@@ -196,7 +196,7 @@ export default function Result(){
                   
                     <tr key={p.id + p.name}>
                        
-                        <td > <input type="checkbox" name={p.name}
+                        <td > <input type="radio" name={p.name}
                         onChange={handleChange}
                         checked={p?.isChecked || false}
                         value={p.name}
@@ -216,7 +216,7 @@ export default function Result(){
                         <td>{p.time}</td>
                         <td>{p.date}</td>
                         <td>{p.details}</td>
-                        <td>{p.list_test}</td>
+                       
                     </tr>
                 )
             })
@@ -225,7 +225,7 @@ export default function Result(){
     return(
         <div className='Result' >
        <div className='select-test-Result'>
-       <select onChange={(e)=>SortTest(e)}>
+       <select  onChange={(e)=>SortTest(e)}>
       <option>Выберите нужный тест</option>
       <option value="Тестировщик1">Тестировщик1</option>
       <option value="Тестировщик2">Тестировщик2</option>
@@ -274,7 +274,7 @@ export default function Result(){
             <table className='table'>
             <thead >
 		<tr>
-        <th><input type="checkbox"   name="allSelect"
+        <th><input type="radio"   name="allSelect"
       checked={l.filter((p)=>p?.isChecked !== true).length<1}
       onChange={handleChange}
         /></th>
@@ -284,7 +284,7 @@ export default function Result(){
 			<th>Время</th>
             <th>Дата</th>
             <th>Детали</th>
-			<th>Список тестов</th>
+			
 		</tr>
 	</thead>
 
@@ -294,9 +294,10 @@ export default function Result(){
                     {Table()}
                 </tbody>
             </table>
+                
         </div>
       
-      
+     
         </div>
     )
 }

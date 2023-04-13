@@ -5,6 +5,7 @@ import "../TakeTest/Form"
 export default function LookResultTest(){
     const navigate = useNavigate(); 
     const [admin, setAdmin] = useState(true)
+  
     const people = [
         
         
@@ -40,7 +41,8 @@ export default function LookResultTest(){
                     
                     <div key={p.id}>
                         <div  className='LookResultTest'>
-                      <div className='LookResultTest-general_data'>
+                           
+                      <div className={p.status==="Завершен"? "LookResultTest-general_data1" : "LookResultTest-general_data2"}>
                        
                     <h1>{p.name_test}</h1>
                   <h3>Количество заданий:  </h3>

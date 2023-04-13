@@ -3,20 +3,23 @@ import "../TakeTest/DoTest.css";
 //import FormList from "./FormList";
 //import Picture from './Picture';
 
-import React from "react";
+import React, {useState} from "react";
 
 import "./LookResultTest"
 
 import "../TakeTest/DoTest";
-import { useNavigate } from "react-router-dom";
 //import Form from "./Form";
 import "../CreateTest/FormCreateTest"
 import LookResultTest from "./LookResultTest";
+import TestList from "./TestList";
+
+//import NavBarUsers from "./NavBarUsers";
 //import {SketchField, Tools} from 'react-sketch';
 
 
  const  Main = ({props})=>{
-  const navigate = useNavigate(); 
+  const [admin, setAdmin] = useState(true)
+ 
   /*
   let state = {
     time: 0,
@@ -33,8 +36,20 @@ import LookResultTest from "./LookResultTest";
   return (
     <>
  
-  <LookResultTest/>
-  <button onClick={()=>navigate("/createTest")}>Создать новый тест</button>
+
+  <button onClick={(e)=>setAdmin(!admin)}>Поменять роль</button>
+ {admin?<> 
+  <p>Админ</p>
+  <TestList/>
+
+ 
+ </>:
+ <>
+{/*} <NavBarUsers/>*/}
+ <p>Пользователь</p>
+ <LookResultTest/>
+ 
+ </>}
    {/*}
    <Form/>*/}
        

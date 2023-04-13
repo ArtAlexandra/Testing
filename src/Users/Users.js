@@ -4,8 +4,9 @@ import "./Users.css"
 
 import 'reactjs-popup/dist/index.css';
 import AssignTest from './AssignTest';
-import DeletePerson from './DeletePerson';
+//import DeletePerson from './DeletePerson';
 import NewPerson from './NewPersone';
+import DeleteTest from '../Main/DeleteTest';
 export default function Users(){
     const [isAdd, setIsAdd] = useState(false)
     
@@ -46,7 +47,7 @@ export default function Users(){
      
    
    const people = [
-    /*
+    
     {
         id:0,
         name: "Горбунов Сергей Тимофеевич",
@@ -95,7 +96,7 @@ export default function Users(){
         email: "androohov@mail.ru",
         list_test : "Тестировщик1",
     },
-    */
+    
    ]
    const [l, setL] = useState(people)
    function Sort(){
@@ -242,7 +243,8 @@ else{
    {isOpen? <AssignTest
       
       handleClose={togglePopup} setTask={setTask}/>:null}
-      {isDelete? <DeletePerson handleClose={Delete} setTask={setIsDelete} />:null}
+      {isDelete? <DeleteTest handleClose={Delete} setTask={setIsDelete} />:null}
+    
       {isAdd? <NewPerson setAddPersone={setIsAdd} handleClose={FunctAddPersone} setName={setName} setEmail={setEmail} setPassword={setPassword} setTask={setTask}/>:null}
     
       </>

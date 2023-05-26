@@ -1,26 +1,30 @@
 import React from 'react'
 import "./DeletePerson.css"
-import CloseButton from 'react-bootstrap/CloseButton';
 
-export default function DeletePerson({handleClose,setTask}){
-    
+
+export default function DeletePerson({setIsDelete, setAgree}){
+ 
+    const  delete_persone =()=>{
+        setAgree(true)
+        setIsDelete(false)
+    }
     return(
         <>
-        <div className="popup-box-DeletePerson">
+        <div className="delete-person__popur-box">
      
-        <div className="box-DeletePerson">
-            <div className='title-DeletePerson'>
-        <h1>Вы уверены?</h1>
-        <CloseButton onClick={handleClose} className='CloseButton-DeletePerson'/>
-       
-        </div>
+            <div className="delete-person__box">
+                <div className='delete-person__box__title'>
+                    <h1>Вы уверены?</h1>
+                  
+                </div>
         
-    <button className='OK2-DeletePerson' onClick={handleClose}>Отмена</button>
-    <button className='OK-DeletePerson' onClick={()=> setTask("yes")}>Удалить</button>
-        </div>
+                <button className='delete-person__box__cancel' onClick={(e)=>setIsDelete(false)}>Отмена</button>
+                <button  className='delete-person__box__delete' onClick={delete_persone}>Удалить</button>
+            </div>
        
-      </div>
-      
-</>
+        </div>
+
+       
+        </>
     )
 }

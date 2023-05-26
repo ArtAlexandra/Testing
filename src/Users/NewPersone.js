@@ -1,33 +1,81 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import "./NewPersone.css"
-export default function NewPersone({setAddPersone, handleClose, setName, setEmail, setPassword, setTask}){
+export default function NewPersone({setAddPersone, handleClose,newUser, setNewUser}){
+    const [empty1, setEmpty1] = useState(false)
+    const [empty2, setEmpty2] = useState(false)
+    const [empty3, setEmpty3] = useState(false)
+    
+
+    const list_test = [
+        {
+            id: 1,
+            name: "Тестировщик1"
+
+        },
+        {
+            id: 2,
+            name: "Тестировщик2"
+
+        },
+        {
+            id: 3,
+            name: "Тест"
+
+        },
+        {
+            id: 4,
+            name: "Какое-то очень длинное название"
+
+        },
+
+    ]
+
+    const InputNewUser = (e)=>{
+        setNewUser(prev=>({...prev,[ e.target.name]: e.target.value}))
+       
+    }
+    const AddUser = (e)=>{
+        console.log(newUser)
+        if(newUser.name==="") setEmpty1(true)
+        if(newUser.email==="") setEmpty2(true)
+        if(newUser.password==="") setEmpty3(true)
+
+       if(newUser.name&&newUser.email&&newUser.password) setAddPersone(false)
+    }
     
     return(
         <>
-         <div className="popup-box-NewPersone">
+            <div className="new-persone__popup-box">
+                <div className="new-persone__box">
+                    <div className='new-persone__box__title'>
+                       {newUser?.name ? <h1>Редактирование</h1>: <h1>Новый пользователь</h1>} 
+                        <CloseButton onClick={handleClose}  className='new-persone__box__close-button'/>
+                    </div>
+                    <div className='new-person__box__error'>
+                        {empty1 ||empty2||empty3 ? <p>Необходимо заполнить все поля</p>: null}
+                    </div>
+                    <input className={empty1? 'new-persone__input_error new-persone__box__input': 'new-persone__box__input'} type="text" placeholder="Имя" name="name" value={newUser?.name||""} onChange={InputNewUser}/>
      
-     <div className="box-NewPersone">
-         <div className='title-NewPersone'>
-     <h1>Новый пользователь</h1>
-     <CloseButton onClick={handleClose}  className='CloseButton-NewPersone'/>
-     </div>
-     <input className='InputCome' type="text" placeholder="Имя" onChange={(e)=>setName(e.target.value)}/>
-     
-     <input className='InputCome' type="email" placeholder="Электронный адрес" onChange={(e)=>setEmail(e.target.value)} />
-     <input className='InputCome' type="password" placeholder="Пароль" onChange={(e)=>setPassword(e.target.value)}/>
-     <Form.Select  className='select-test-NewPersone' onChange={(e)=>setTask(e.target.value)}>
-      <option>Выбрать тест</option>
-      <option value=" Тестировщик1" >Тестировщик1</option>
-      <option value=" Тестировщик2" >Тестировщик2</option>
-      <option value=" Тест" >Тест</option>
-    </Form.Select>
+                    <input className={empty2? 'new-persone__input_error new-persone__box__input': 'new-persone__box__input'} type="email"  placeholder="Электронный адрес" name="email" onChange={InputNewUser}/>
+                    <input className={empty3? 'new-persone__input_error new-persone__box__input': 'new-persone__box__input'} type="password" placeholder="Пароль" name="password" onChange={InputNewUser}/>
 
- <button className='OK-NewPersone' onClick={()=> setAddPersone(false)}>Добавить пользователя</button>
-     </div>
+                    <Form.Select  className='new-persone__box__select' name="task" onChange={InputNewUser}>
+                        <option>Выбрать тест</option>
+                        {
+                            list_test.map((test)=>{
+                                return(
+                                    <option value={test.name} key={test.id}>{test.name}</option>
+                                )
+                            })
+                        }
+                    </Form.Select>
+
+                    <button className='new-persone__box__button' onClick={AddUser}>Добавить пользователя</button>
+                </div>
     
-   </div>
+            </div>
         </>
     )
 }

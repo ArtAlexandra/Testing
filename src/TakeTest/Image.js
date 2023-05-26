@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import "./Image.css"
 import ImageMarker from 'react-image-marker';
 export default function Image({point,setPoint, markers, setMarkers}) {
 
   const [number, setNumber] = useState(1)
-  
+ 
 
  function Add(marker){
   setMarkers([...markers, marker])
@@ -17,6 +17,7 @@ export default function Image({point,setPoint, markers, setMarkers}) {
   setPoint([...point,p]) 
  
  }
+
  
  
       return (

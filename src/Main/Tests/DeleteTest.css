@@ -1,4 +1,4 @@
-.delete-person__popur-box {
+.delete-test__popup-box {
   position: fixed;
   background: #00000093;
   width: 100%;
@@ -9,7 +9,7 @@
 }
 
 
-.delete-person__box {
+.delete-test__box {
   position: relative;
   width: 600px;
   margin: 0 auto;
@@ -23,27 +23,21 @@
 }
 
 
-.delete-person__box__title{
+.delete-test__box__title{
    
-    width: 80%;
-    margin-left: 10%;
-    margin-top:10px;
-    
- 
+    width: 50%;
+    margin-left: 25%;
+    margin-top:40px;
   
 }
 
-.delete-person__box__title h1{
-  font-family: 'Montserrat',sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 40px;
-line-height: 49px;
-padding-left: 15%;
+.delete-test__box__title h1{
+    font-weight: bold;
+    font-size: 40px;
 }
 
 
-.delete-person__box__delete{
+.delete-test__box__delete{
     width: 30%;
     height: 50px;
     border-radius: 30px;
@@ -55,7 +49,7 @@ padding-left: 15%;
     margin-top: 30px;
   
 }
-.delete-person__box__cancel{
+.delete-test__box__cancel{
     width: 30%;
     height: 50px;
     border-radius: 30px;

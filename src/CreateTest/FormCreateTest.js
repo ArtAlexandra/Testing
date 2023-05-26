@@ -1,30 +1,37 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import NewTest1 from './NewTest1';
-import NewTest2 from './NewTest2';
-import  '../TakeTest/Form.css';
-import SaveTest from './SaveTest';
 
+import  '../TakeTest/Form.css';
+import "./FormCreateTest.css";
+import SaveTest from './SaveTest';
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function FormCreateTest(){
+    const state= useLocation().state
+    console.log(state)
     const [save, setSave] = useState(false)
-    const [nameTest, setNameTest] = useState("")
-    const [porog, setPorog] = useState(0)
-    const [h, setH] = useState(0)
-    const [min, setMin] = useState(0)
-    const [colorBut1, setColorBut1] = useState("title-form2")
-    const [colorBut2, setColorBut2] = useState("title-form3")
-    const FormTitle = ["Задание 1", "Задание 2"]
-    
-    const [Data, SetData] = useState([]);
+    const [nameTest, setNameTest] = useState(state?.nameTest|| "")
    
-    const [numb, setNumb] = useState(false)
-    const [page, setPage] = useState(0)
+    const [porog, setPorog] = useState(state?.porog || 0)
+    const [h, setH] = useState(state?.h || 0)
+    const [min, setMin] = useState(state?.min ||0)
+    useEffect(() => {
+        if(state?.nameTest) document.title = 'Редактирование теста'
+        else document.title = 'Создание теста';
+        document.img="/Pict/oggetto-logo-png.png";
+      }, []);
+ 
+    
+    const [Data, SetData] = useState(state?.errorPoint||[]);
+   
+    const [numb, setNumb] = useState(state?.numb||false)
+
 
     const [selectedImage, setSelectedImage] = useState(null);
-  const [mainText,setMainText] = useState("")
-  const [errorPoint, setErrorPoint] = useState([])
+  const [mainText,setMainText] = useState(state?.mainText || "")
+  const [errorPoint, setErrorPoint] = useState(state?.errorPoint || [])
 
-
+/*
   const [Data2, SetData2] = useState([]);
    
   const [numb2, setNumb2] = useState(false)
@@ -33,50 +40,32 @@ export default function FormCreateTest(){
   const [selectedImage2, setSelectedImage2] = useState(null);
 const [mainText2,setMainText2] = useState("")
 const [errorPoint2, setErrorPoint2] = useState([])
+*/
+
  function SeeNewTest(){
-    if(page===0){
+  
       
         return <NewTest1  errorPoint={errorPoint} setErrorPoint={setErrorPoint} mainText={mainText} setMainText={setMainText} selectedImage={selectedImage} setSelectedImage={setSelectedImage} Data={Data} setData={SetData} numb={numb} setNumb={setNumb}/>
-    }
+    
+    /*
     if(page===1){
       
         return <NewTest2 errorPoint={errorPoint2} setErrorPoint={setErrorPoint2} mainText={mainText2} setMainText={setMainText2} selectedImage={selectedImage2} setSelectedImage={setSelectedImage2} Data={Data2} setData={SetData2} numb={numb2} setNumb={setNumb2}/>
-    }
+    }*/
     
    
 }
     return(
-        <div className='form'>
-   
-        <div >
-            <button className={colorBut1} onClick={()=>{setPage(0);
-                setColorBut1("title-form2")
-                setColorBut2("title-form3")
-            }   
-        }
-            
-            >1</button>
-            <button className={colorBut2} onClick={()=>{setPage(1);
-            setColorBut2("title-form2")
-            setColorBut1("title-form3")
-            }} >2</button>
-            {/*}
-            <img src="/Pict/prev.png" alt="назад" onClick={()=>{
-                if (page > 0 ) {
-                    setPage((p)=>p - 1)}}}
-                     />
-
-            <p>{FormTitle[page]}/{FormTitle.length}</p>
-       
-
-            <img src='/Pict/next.png' alt='next' onClick={()=>{
-                    if(page < FormTitle.length -1){
-                        setPage((p)=>p+ 1)
-                    }
-            }}/>
+        <div className='form-create-test__main'>
+       <div className='form-crete-test__title'>
+        <div className='form-crete-test__name-test'>
+            {state?.nameTest? <h1 >Редактирование: {nameTest}</h1>: nameTest? <h1>{nameTest}</h1>: <h1>Новый тест</h1>}
+            </div>
+             <button   onClick={()=>setSave(true)} className='form-crete-test__save'>Завершить <img src="/Pict/Vector.png" alt='save'/></button> 
+        
+       </div>
            
-        */}
-        </div>
+
         <div className='body-form'>
             {SeeNewTest()}
             
@@ -84,11 +73,9 @@ const [errorPoint2, setErrorPoint2] = useState([])
         </div>
        
       
-        {page === FormTitle.length - 1? 
-        <div className='saveTest-FormCreateTest'>
-        <button   onClick={()=>setSave(true)}>Завершить</button> <img src="/Pict/Vector.png" alt='поиск'/>
-        </div>
-        : null}
+        
+       
+        
         
        
         {save? <>

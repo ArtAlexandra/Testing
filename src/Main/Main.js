@@ -11,7 +11,7 @@ import "../TakeTest/DoTest";
 //import Form from "./Form";
 import "../CreateTest/FormCreateTest"
 import LookResultTest from "./LookResultTest";
-import TestList from "./TestList";
+import TestList from "./Tests/TestList";
 
 //import NavBarUsers from "./NavBarUsers";
 //import {SketchField, Tools} from 'react-sketch';

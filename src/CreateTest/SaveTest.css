@@ -43,11 +43,11 @@
 }
 .popup-box-DeletePerson {
     position: fixed;
-    background: #00000050;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
+  background: #00000093;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
   }
   
   .box-DeletePerson {

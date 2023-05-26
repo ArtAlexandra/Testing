@@ -1,57 +1,76 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
+import {  NavLink, useMatch, useNavigate, useResolvedPath } from "react-router-dom"
 
+import { Navbar,Nav} from 'react-bootstrap';
+
+import { AuthContext } from "../context/authContext";
 
 import "./Navibar.css";
 
-import {
-  BrowserRouter as Router,
- //Routes,
- // Route,
-  } from "react-router-dom";
-
-
-import {  useMatch, useResolvedPath } from "react-router-dom"
-
-import { Navbar,Nav} from 'react-bootstrap';//, Container 
-
-
-export default function Navibar() {
-  return (
-    <nav className="nav-Navibar">
-       
-      <Router>
-      
-      <Navbar  >
-      <img src="/Pict/label.png" alt="label" className="pict-Navibar"/>
-      <Nav  >
-        <ul>
-        <CustomLink href="/" >Тесты</CustomLink>
-        <CustomLink href="/Result" >Результаты</CustomLink>
-        <CustomLink href="/Users" >Пользователи</CustomLink>
-        <div className={"NavDropdown "}>
-        <Nav.Link  href="/Come">Имя Фамилия <img src="/Pict/Exit.png" alt="exit"/></Nav.Link >
-       
-</div>
-</ul>
-</Nav>
-      </Navbar>
-      </Router>
-    </nav>
-  )
-}
 
 function CustomLink({ href, children, ...props }) {
   const resolvedPath = useResolvedPath(href)
+  
+
   const isActive = useMatch({ path: resolvedPath.pathname, end: true })
 
   return (
     
-    <li className={isActive ? "active" : ""}>
-      <Nav.Link href={href} >
+    <li className={ isActive?"navbar__item_active":null}>
+      <Nav.Link href={href}>
         {children}
       </Nav.Link>
     </li>
   
   )
 }
+
+export default function Navibar() {
+  const { currentUser, logout } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const handleSubmit = async e=>{
+    navigate("/come")
+   /*
+    e.preventDefault()
+    try{
+     
+        const res = logout();
+        console.log(res.data)
+        navigate("/come")
+    }
+    catch(err){
+     console.log(err.response.data)
+   
+    }*/
+  }
+  
+  return (
+    <nav className="navbar">
+       
+      <Navbar className="navbar__item">
+        <img src="/Pict/label.png" alt="label" />
+        <Nav >
+        
+          <ul>
+
+            <CustomLink href="/" >Тесты</CustomLink>
+            <CustomLink href="/result" >Результаты</CustomLink>
+            <CustomLink href="/Users" >Пользователи</CustomLink>
+           
+          </ul>
+        </Nav>
+        
+        <div   className={"navbar__dropdown"}  onClick={(e)=>handleSubmit(e)} >
+              <b >Вячеслав Блинский</b > <img src="/Pict/Exit.png" alt="exit" />{/*{currentUser?.username} className={"navbar__dropdown"} */}
+              </div>
+              </Navbar>
+           
+    
+    </nav>
+  )
+}
+
+
+
+

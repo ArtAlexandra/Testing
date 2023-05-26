@@ -1,38 +1,109 @@
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Component} from 'react';
-import NaviBar from "./Main/Navibar";
-import React, {useState} from 'react';
-//import { Router } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
 
-import DoTest2 from "./TakeTest/DoTest2";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react';
+
+
+
+
 import DoTest from "./TakeTest/DoTest";
 
 
-import './Result/Result';
-import  './Users/Users';
 
 
 import Users from './Users/Users';
 import Result from "./Result/Result";
-import Come from "./Main/Come";
+import Come from "../src/Main/Login/Come";
 
 import Main from "./Main/Main";
 import LookResultTest from "./Main/LookResultTest";
-//import Footer from './Footer';
-//import NewPerson from './NewPerson';
+
 import Form from "./TakeTest/Form";
 import FormCreateTest from "./CreateTest/FormCreateTest";
+import Navibar from "./Main/Navibar";
+import Footer from "./Main/Footer";
+import FormPassedTest from "./Result/FormPassedTest";
+import ErrorURL from "./ErrorURL";
 
+
+const Layout = () => {
+  return (
+    <>
+     <Navibar/>
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Main/>
+      },
+      {
+        path: "/result",
+        element: <Result />
+      },
+      {
+        path: "/Users",
+        element: <Users />,
+      },
+      {
+        path: "/LookResultTest",
+        element: <LookResultTest/>
+      },
+      {
+        path: "/passing",
+         element: <Form/>
+      },
+      {
+        path: "result/passingtest",
+        element: <FormPassedTest/>
+      },
+      {
+        path:"/DoTest",
+        element:<DoTest/>
+      },
+     
+      {
+        path: "/createTest",
+        element: <FormCreateTest/>
+      },
+     
+    ],
+  },
+  {
+    path: "*",
+    element:<ErrorURL/>
+  },
+  {
+    path: "/come",
+    element: <Come />,
+  },
+]);
 
 export default function App() {
   
-//  render(){
+
 
   return (
     <>
-    {/*Чтобы запустить проект: npm start */}
+   
+     <div>
+   
+        <RouterProvider router={router} />
+      </div>
+   {/*
     <NaviBar/> 
    
   
@@ -59,7 +130,8 @@ export default function App() {
       </Routes>
       </Router>
    
-    
+  */}
+
      </>
   );}
 //}

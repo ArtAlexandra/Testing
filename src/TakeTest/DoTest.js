@@ -4,19 +4,71 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Error from './Error';
-//import Picture from './Picture';
-import Image from './Image';
+
 import "./Form.css"
-//import ListError from './ListError';
+
+
+import { Stage, Layer, Circle,  Text, Group,Image, Rect} from 'react-konva';
+import { useEffect } from 'react';
+import useImage from "use-image";
+
+const LionImage = ({selectedImage}) => {
+ 
+ 
+    //var blobObj = new Blob([selectedImage], { type: "image/png" });
+   // var url = window.URL.createObjectURL(blobObj);
+ 
+   const [image] = useImage(selectedImage);
+    return (
+     
+    <Image image={image}/>
+  );
+};
+
+
+const MyCircle = ({rectangles, selectedImage})=>{
+ return(
+<Layer>
+ <LionImage selectedImage={selectedImage}/>
+  {rectangles.map((rect)=>{
+    return(
+      <Group
+      key={rect.id}
+      id={rect.id}
+      x={rect.x}
+      y={rect.y}
+      >
+      <Circle  
+         fill={rect.fill} radius={15}  /> 
+  
+      <Text
+      
+      fontSize={15}
+      text={rect.id}
+     fill="white"
+      strokeWidth={1}
+      align="centre"
+      padding={-5}/>
+      </Group>
+    )
+  })}
+     </Layer>
+        
+ )
+}
+
+
+
 export default function DoTest({Todos, SetTodos, number, setNumber, markers, setMarkers}) {
  
-     
+ 
+  
     const [text1, setText1] = useState("")
     const [text2, setText2] = useState("")
     const [moreText, setMoreText] = useState("")
     const [n, setN] = useState("")
-    const [point,setPoint] = useState([])
-    
+   
+const [point, setPoint] = useState([])
 
 
   function removeError(id){
@@ -51,13 +103,45 @@ console.log(newItem)
     }
   }
   
- //className='DoTest'
+
+
+ const [i, setI] = useState(1)
+
+  const createRectangle = (e)=>{
+    let newRectangle = {};
+  
+    const stage = e.target.getStage();
+    const stageLocation = stage.getPointerPosition();
+    console.log(stageLocation)
+   setI(i=>i+1)
+    newRectangle.width = 100
+    newRectangle.height = 50
+    newRectangle.x = stageLocation.x
+    newRectangle.y = stageLocation.y
+    newRectangle.fill = 'red';
+    newRectangle.id =i
+    let rectangleFromState = [...point];
+    rectangleFromState.push(newRectangle);
+    setPoint(rectangleFromState)
+    
+  }
+ const [selectedImage, setSelectedImage] = useState("")
+  useEffect(()=>{
+    setSelectedImage("/Pict/p_1.png")
+    
+  }, [])
+
   return (
     <div >
+             <Stage width={822} height={600} onClick={(e) => createRectangle(e)}>
+         <MyCircle rectangles={point} selectedImage={selectedImage} />
+
+       
+          </Stage>
+
       <div className='first-part-newTest'>
         <p>Ниже представлен скриншот страницы товара интернет-магазина ru.puma.com, на котором продаются спортивная обувь, одежда и аксессуары.
               На этой странице есть некоторое количество ошибок. Необходимо найти все ошибки и описать их.</p>
-             <Image point={point} setPoint={setPoint} markers={markers} setMarkers={setMarkers}/>
              </div>
        <div >
         <div className='error-description'>
@@ -90,7 +174,7 @@ console.log(newItem)
     <Form.Control type="text" placeholder="Номер ошибки" value={n} onChange={(e)=>setN(e.target.value)}/>
     </Col>
     <Col md>
-    <button className='butAddError2'  onClick={(e)=>{Clear(e)}} >Записать ошибку</button>
+    <button className='new-test__error-description__add-error' onClick={(e)=>{Clear(e)}} >Записать ошибку</button>
     </Col>
     
     </Row>
@@ -106,14 +190,12 @@ console.log(newItem)
    {
             Todos.map((todo)=>{
                 return(
-                  <div>
-                  
-                   <Error  
+                  <Error  
                    error={todo}
                    key={todo.id}
                    removeError = {removeError}
                    />
-                   </div>
+                 
                 );
             })
         }

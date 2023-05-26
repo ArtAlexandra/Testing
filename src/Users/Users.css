@@ -1,29 +1,129 @@
 .find-users-Users:focus-within {
     border: 2px solid #FFDD00;
   }
+  .users__container{
+    width: 80%;
+    margin-left: 10%;
+  }
 .sort {
   
     max-width: 15px;
     max-height: 15px;
     margin-top: -3px;
 }
-.users-Users{
-    margin-left: 10%;
-}
+
 .users-Users h1 {
     margin-left: 30px;
     margin-top: 30px;
     font-size: 50px;
     
 }
-.nav-Users{
+.users__navbar{
    
     
     height: 40px;
-    width: 1000px;
-    margin-left: 30px;
+    width: 100%;
+   
     margin-bottom: 30px;
+
+    display: flex;
 }
+.users__navbar__items{
+   
+    width: 60%;
+    display: flex;
+    margin-left: auto;
+}
+
+.users__navbar__add-test
+{
+ 
+    font-size: 18px;
+   padding-bottom: 5px;
+    font-weight: 400;
+    font-size: 20px;
+   
+    width: 230px;
+    height: 40px;
+  
+    background-color: #ffffff;
+    
+   
+ border: none;
+  justify-content: center;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+ display: inline-block;
+  
+}
+
+.users__navbar__add-test img{
+    
+    display: block;
+    margin-left: auto;
+    margin-right: 15px;
+ margin-top: -25px;
+    cursor: pointer;
+}
+
+.users__navbar__add-test p{
+    width: 80%;
+   margin-left: 25px;
+   margin-top: 5px;
+ display: inline-block;
+}
+
+
+.users__navbar__button
+{
+   
+    font-size: 18px;
+   padding-bottom: 5px;
+    font-weight: 400;
+    font-size: 20px;
+   
+    width: 165px;
+    height: 40px;
+  
+    background-color: #ffffff;
+    
+   
+ border: none;
+  justify-content: center;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+ display: inline-block;
+  
+}
+
+.users__navbar__button img{
+    
+    display: block;
+    margin-left: auto;
+    margin-right: 15px;
+ margin-top: -25px;
+    cursor: pointer;
+}
+
+.users__navbar__button p{
+    width: 80%;
+   margin-left: 25px;
+   margin-top: 5px;
+ display: inline-block;
+
+}
+
+
+.users__navbar__delete{
+    margin-left: auto;
+    margin-right: 0px;
+}
+.users__navbar__add{
+    margin-left: 10px;
+}
+
 .table-Users img{
     width: 30px;
     height: 30px;
@@ -117,7 +217,7 @@
     background-color: white;
    padding: 5px;
    border-radius: 30px;
-   margin-left: 0px;
+  
    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
    border: 1px solid #ddd;
 }
@@ -147,7 +247,7 @@
 
 }
 .table-Users {
-	width: 80%;
+	width: 100%;
 	border: none;
 	margin-bottom: 20px;
 	border-collapse: separate;

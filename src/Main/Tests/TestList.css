@@ -1,6 +1,5 @@
 .test-list__navbar{
     width: 100%;
-
     margin-bottom: 30px;
     display: inline-block;
 }
@@ -9,106 +8,116 @@
     margin-left: 10%;
 }
 
+.test-list__buttons{
+    display: flex;
+    float: right;
+}
 
+@media (width< 1200px) {
+    .test-list__navbar{
+        height: 100px;
+        display: block;
+    }
+    .test-list__buttons{
+        float: left;
+        width: 450px;
+    }
+}
 
 .test-list__navbar__find{
    
-    font-size: 20px;
    
-    color: #808080;
     display: inline-block;
-    width: 350px;
+    width: 400px;
     height: 40px;
     background-color: white;
-   border-radius: 30px;
-   margin-left: 0px;
-  margin-bottom: 8px;
-   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-   border: 1px solid #ddd;
-  
+    border-radius: 30px;
+    margin-left: 0px;
+    margin-bottom: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border: 1px solid #ddd;
 }
+
+
 .test-list__navbar__find img{
-    width: 20px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
     margin-left: 15px;
     margin-right: 15px;
-    padding-bottom: 3px;
+ 
 }
 .test-list__navbar__find input{
-    width: 250px;
+    width: 300px;
     border: none;
     outline: none;
-    font-weight: 10;
+    
+  margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #808080;
 }
 .test-list__navbar__find:focus-within {
     border: 2px solid #FFDD00;
 }
 
-  
 
 
 
-.test-list__buttons{
-    float: right;
-   
-    
-}
-
-
-
-.test-list__buttons__add
-{
+.test-list__buttons__add{
    
     font-size: 18px;
-   padding-bottom: 5px;
-    font-weight: 400;
-    font-size: 20px;
+    padding-bottom: 5px;
    
+  
     width: 230px;
     height: 40px;
-  
     background-color: #ffffff;
-    
-   
- border: none;
-  justify-content: center;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
- 
-  
+    border: none;
+    justify-content: center;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+    font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
 }
 
 .test-list__buttons__add img{
     width: 14px;
     height: 14px;
     display: block;
-    margin-left: 180px;
-  margin-top: -37px;
+    margin-left: auto;
+    margin-right: 15px;
+    margin-top: -35px;
     cursor: pointer;
 }
 
 .test-list__buttons__add p{
     width: 80%;
- 
-   margin-left: 10px;
-   
-   
+    margin-left: 10px;
 }
 
 .test-list__buttons__delete_disabled{
-  
+   
     background-color: #F5F5F5;
-   
-   
+
+
 }
 
-.test-list__buttons__delete_disabled p{
+.test-list__buttons__delete:disabled p{
     color: #000000a0;
 }
 .test-list__buttons__delete_disabled img{
     -webkit-filter: brightness(0) invert(0.5);
     filter: brightness(0) invert(0.5);
+  
 }
 .test-list__buttons__delete_active{
     background-color: #ffffff;
@@ -118,35 +127,40 @@
     color: #000000;
 }
 .test-list__buttons__delete{
-    padding-bottom: 3px;
-    width: 180px;
+   
+    width: 150px;
     height: 40px;
     margin-left: 20px;
     border-radius: 30px;
     border: none;
     font-weight: 400;
-   justify-content: center;
+    justify-content: center;
     font-size: 20px;
-   padding-left: 3px;
-   cursor: pointer;
-   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+   padding-bottom: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Montserrat', sans-serif;
+
+/*
+    padding-top: 5px;
+    background-image: url("/public/Pict/DeletePers.png");
+    background-repeat: no-repeat;
+    background-position: right 10px top 10px;
+    position: relative;*/
 }
 .test-list__buttons__delete img{
     width: 20px;
     height: 20px;
     display: block;
-   margin-left: auto;
-   margin-right: 30px;
-  margin-top: -40px;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: -40px;
     cursor: pointer;
     
 }
+
 .test-list__buttons__delete p{
   width: 90%;
-  
-    
-  
-   
 }
 
 
@@ -163,17 +177,11 @@
 
 
 
-
-
-
-
-
 .test-list__table img:checked {background-color:black;}
 .test-list__table__table{
     margin-top: 100px;
-    
-
 }
+
 .test-list__table {
 	width: 80%;
 	border: none;
@@ -193,8 +201,6 @@
 	background:  #FFFFFF;
 	font-size: 14px;
 	border-top: 1px solid #ddd;
-    
-
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -226,20 +232,17 @@
 	padding: 10px 15px;
 	font-size: 14px;
 	vertical-align: top;
-   
-
 }
+
 .test-list__table tbody tr:nth-child(even) {
-
     background: #FFFFFF;
-
 }
+
 .test-list__table tbody tr:last-child td{
 	border-bottom: 1px solid #ddd;
 }
 .test-list__table tbody tr:first-child td{
-    
-	border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .test-list__table tbody tr:last-child td:first-child {
 	border-radius: 0 0 0 20px;
@@ -270,6 +273,20 @@
 }
 
 .test-list__box__edit{
-   
-    margin-right:-20px;
+   margin-right:-20px;
+}
+
+
+.list_test_null-LookResultTest{
+    font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 37px;
+
+margin-top: 70px;
+}
+.list_test_null-LookResultTest p{
+    margin-top: 30px;
+    margin-left: -15px;
 }

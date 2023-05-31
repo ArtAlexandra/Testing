@@ -8,11 +8,13 @@ export default function Result({props}){
     useEffect(()=>{
        document.title= 'Результаты тестирования'
     },[])
+    const navigate = useNavigate()
 
     const [sort, setSort] = useState(true)
     const [allTest, setAllTest] = useState([])
 
     
+    const [reset, setReset] = useState(true)
     const [post, setPost] = useState({})
     const location = useLocation()
     const postId = location.pathname.split("/")[2]
@@ -68,8 +70,7 @@ export default function Result({props}){
      
 
 
-
-
+     
 
    
 
@@ -103,7 +104,7 @@ export default function Result({props}){
             porog: 75,
             h: 1,
             min: 15,
-            owner: "Горелова Елизавета",
+            name: "Горелова Елизавета",
             point:[errorPoint[0], errorPoint[1]],
             n: 2,
             selectedImage: "/Pict/p_1.png"
@@ -147,7 +148,7 @@ export default function Result({props}){
             name: "Горелова Елизавета Михайловна",
             estimation: "Незачет",
             score: 0,
-            time: "-",
+            time: "",
             date: "12.02.2023",
             details: "Посмотреть",
             checked: false,
@@ -200,17 +201,26 @@ export default function Result({props}){
         {
             id:6,
             name: "Пупкин Василий Васильевич",
-            estimation: "-",
-            score: "-",
-            time: "-",
-            date: "-",
-            details: "-",
+            estimation: "",
+            score: "",
+            time: "",
+            date: "",
+            details: "",
             checked: false,
             list_test : "Тестирование",
         }
+        
        
-       ]
-       ;
+       ];
+    const [input, setInput] = useState("")
+    
+    useEffect(()=>{
+        const searchUser = l.filter(value => value.name.toLowerCase().includes(input.toLowerCase()))
+
+       setL(searchUser)
+       
+     }, [input])
+
         const [l, setL] = useState(people)
         function SortEstimation(e){
             const estimation = e.target.value
@@ -302,7 +312,8 @@ export default function Result({props}){
         }
     }
  
-   console.log(location.state)
+  // console.log(location.state)
+
 
     function Table(){
 
@@ -319,21 +330,16 @@ export default function Result({props}){
                         value={p.name}
                         /></td>
                         <td>{p.name}</td>
-                        {p.estimation==="" ? "-":
-                        p.estimation==="Зачет"? 
-                       
-                             <td className='Zachet'>{p.estimation}</td>
-                        :
-                        p.estimation==="Незачет"?
-                         <td className='NotZachet'>{p.estimation}</td>
-                        :null
-                        }
-                       
-                        <td>{p.score==='-'? '-' : p.score+'%'}</td>
-                        <td>{p.time}</td>
-                        <td>{p.date}</td>
+                        {p.estimation===""? <td>{'\u2013\u2013'}</td>:null}
+                        {p.estimation==="Зачет"? <td className='Zachet'>{p.estimation}</td>:null}
+                        {p.estimation==="Незачет"? <td className='NotZachet'>{p.estimation}</td>:null}
+                        <td>{p.score===''? "\u2013\u2013" : p.score+'%'}</td>
+                        <td>{p.time==='' ? "\u2013\u2013": p.time}</td>
+                        <td>{p.date===''? "\u2013\u2013": p.date}</td>
                         
-                        <td>{p.score==='-'? '-' : <NavLink to={`passingtest?edit=${p.id}`}   state={post} key={p.id} className='result__table__body__Link'>Просмотр</NavLink>}</td>
+                        <td>{p.estimation===''? "\u2013\u2013" : <NavLink to={`passingtest?edit=${p.id}`}   state={post} key={p.id} className='result__table__body__Link'>Просмотр</NavLink>}</td>
+                        
+                        
                        
                     </tr>
                 )
@@ -342,11 +348,24 @@ export default function Result({props}){
        }
      
     return(
+        <>
+        {people.length === 0 ? <div className='list_test_null-LookResultTest'>
+            <img src="/Pict/Folder.png" alt="пока нет тестов"/> 
+           
+            <div className='text-LookResultTest'>
+                    <p>Тестов пока нет</p>
+                  
+                        <button onClick={()=>navigate("/test/createTest")} className='add_test-LookResultTest'>Создать новый  <img src="/Pict/Add.png" alt="+"/> </button>
+                       
+                   
+                </div>
+            </div>
+            :
         <div className='result' >
             <p className='result__title'>Результаты</p>
             <div className='result__select-test'>
                 
-                <select  onChange={(e)=>SortTest(e)}>
+                <select  onChange={(e)=>SortTest(e)} onClick={()=>setReset(false)}>
                     <option>Выберите нужный тест</option>
                     {allTest.map((test)=>{
                     return(
@@ -357,24 +376,24 @@ export default function Result({props}){
    
             </div>
             <div className='result__navbar'>
-                <div className='result__navbar__find'>
+                <div className='test-list__navbar__find'>
                     <img src="/Pict/Search.png"alt='поиск'/>
-                    <input type='text' placeholder='Найти'/>
+                    <input type='text' placeholder='Найти' onChange={(e)=>setInput(e.target.value)}/>
                 </div>
                
                 <div className='result__navbar__items'>
                     
                 <div className='result__navbar__estimation'>
-                    <select onChange={(e)=>SortEstimation(e)}>
+                    <select onChange={(e)=>SortEstimation(e)} onClick={()=>setReset(false)}>
                         <option>Оценка</option>
-                        <option value="Зачет">Зачет</option>
-                        <option value="Незачет">Незачет</option>
+                        <option value="Зачет" >Зачет</option>
+                        <option value="Незачет" >Незачет</option>
                         <option value="-">-</option>
                     </select>
                 </div>
  
                 <div className='result__navbar__score'>
-                    <select onChange={(e)=>SortScore(e)}>
+                    <select onChange={(e)=>SortScore(e)}  onClick={()=>setReset(false)}>
                         <option>Счёт</option>
                         <option value={100}>100%</option>
                         <option value={90}>90%</option>
@@ -392,16 +411,16 @@ export default function Result({props}){
                 </div>
      
                     
-                    <button  className='result__navbar__reset' onClick={()=>window.location.reload()}>
-                        <p>Сброс</p>
-                          <img src="/Pict/delete2.png" alt="delete"/>
+                    <button disabled={reset} className={'result__navbar__reset'} onClick={()=>window.location.reload()}>
+                        <p>Сброс  <img src="/Pict/delete2.png" alt="delete"/></p>
+                          
                         </button>
                    
                 
                 </div>
                  
             </div>
-                  
+                {l.length===0? <p>Такой пользователь не найден</p>:
             <div className='result__table-users'>
                 <table className='result__table'>
                     <thead >
@@ -428,8 +447,10 @@ export default function Result({props}){
                 </table>
                 
             </div>
-      
+            }
      
         </div>
+        }
+        </>
     )
 }

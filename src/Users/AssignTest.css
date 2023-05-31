@@ -31,18 +31,23 @@
   height: 12%;
   
   margin-bottom: 10px;
-margin-left: 5%;
+margin-left: 10%;
+margin-top: 30px;
+font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 49px;
  
 }
 
-.assign-test__box__title h1{
-    font-size: 25px;
-}
+
 
 .assign-test__box__close-button{
    
     font-size: 25px;
-  margin-left: 95%;
+  margin-left: auto;
+  margin-right: 3%;
     margin-top: -90px;
     display: block;
 }
@@ -60,6 +65,16 @@ margin-left: 5%;
  border:2px solid #E0E0E0;
   padding-left:30px;
 
+  font-family: 'Montserrat',sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 17px;
+
+
+
+color: #808080;
+
  
 }
 .assign-test__box__button{
@@ -69,9 +84,15 @@ margin-left: 5%;
     font-size: 30px;
     background-color: #FFDD00;
     border: none;
-    font-weight: bold;
+   
     margin-left: 10%;
     margin-top: 30px;
+
+    font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 24px;
 }
 
   

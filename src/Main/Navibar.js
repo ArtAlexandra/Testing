@@ -1,21 +1,22 @@
 import React, {useContext} from 'react'
 
-import {  NavLink, useMatch, useNavigate, useResolvedPath } from "react-router-dom"
+import {   useMatch, useNavigate, useResolvedPath } from "react-router-dom"
 
 import { Navbar,Nav} from 'react-bootstrap';
 
-import { AuthContext } from "../context/authContext";
+//import { AuthContext } from "../context/authContext";
 
 import "./Navibar.css";
 
 
-function CustomLink({ href, children, ...props }) {
+const  CustomLink = ({ href, children, ...props })=> {
   const resolvedPath = useResolvedPath(href)
   
 
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+  const isActive = useMatch({ path: resolvedPath.pathname, end: (resolvedPath.pathname).length===1 })
 
-  return (
+ 
+return (
     
     <li className={ isActive?"navbar__item_active":null}>
       <Nav.Link href={href}>
@@ -27,43 +28,50 @@ function CustomLink({ href, children, ...props }) {
 }
 
 export default function Navibar() {
-  const { currentUser, logout } = useContext(AuthContext);
+  //const { currentUser, logout} = useContext(AuthContext);
   const navigate = useNavigate()
   const handleSubmit = async e=>{
-    navigate("/come")
+
    /*
     e.preventDefault()
     try{
+      const res = logout();
+      console.log(res.data)
+      //window.location.reload()
+      navigate("/come")
      
-        const res = logout();
-        console.log(res.data)
-        navigate("/come")
+
+       
+        
     }
     catch(err){
      console.log(err.response.data)
    
     }*/
+    navigate("/come")
   }
   
   return (
     <nav className="navbar">
        
       <Navbar className="navbar__item">
-        <img src="/Pict/label.png" alt="label" />
+        <div className='navbar__image'>
+     {/* <img src="/Pict/label.png" alt="label" />*/}
+      </div>
         <Nav >
         
           <ul>
-
-            <CustomLink href="/" >Тесты</CustomLink>
+            <CustomLink href="/test" >Тесты</CustomLink>
             <CustomLink href="/result" >Результаты</CustomLink>
-            <CustomLink href="/Users" >Пользователи</CustomLink>
+            <CustomLink href="/user" >Пользователи</CustomLink>
            
           </ul>
         </Nav>
         
         <div   className={"navbar__dropdown"}  onClick={(e)=>handleSubmit(e)} >
-              <b >Вячеслав Блинский</b > <img src="/Pict/Exit.png" alt="exit" />{/*{currentUser?.username} className={"navbar__dropdown"} */}
+              <b>Вячеслав Блинский</b>{/*{currentUser?.username} */} 
               </div>
+              
               </Navbar>
            
     
@@ -73,4 +81,4 @@ export default function Navibar() {
 
 
 
-
+// <img src="/Pict/Exit.png" alt="exit" />

@@ -29,19 +29,24 @@
   width: 90%;
   height: 12%;
   
-  margin-bottom: 10px;
-margin-left: 5%;
+ 
+margin-left: 10%;
+margin-top: 30px;
+
+font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 49px;
  
 }
 
-.new-persone__box__title h1{
-    font-size: 25px;
-}
 
 .new-persone__box__close-button{
    
     font-size: 25px;
-  margin-left: 95%;
+  margin-left: auto;
+  margin-right: 3%;
     margin-top: -90px;
     display: block;
 }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Link, useNavigate, useLocation } from "react-router-dom";
+import {Link, useNavigate, useLocation, NavLink } from "react-router-dom";
 
 
 import DeleteTest from './DeleteTest';
@@ -17,6 +17,7 @@ export default function TestList({props}){
     const [del, setDel] = useState(false)
 
     const [active, setActive] = useState(false)
+   
     const listTest=[
         
         
@@ -48,6 +49,7 @@ export default function TestList({props}){
             numb_people: 0, 
             time: "40 мин"
         },
+    
         
     ]
    
@@ -103,11 +105,8 @@ export default function TestList({props}){
     const [post, setPost] = useState({})
     const location = useLocation()
     const postId = location.pathname.split("/")[2]
-    const [idTest, setIdTest] = useState("")
    
-
-
- //const [Data, setData] = useState([])
+   
     const errorPoint = [
         {
             id: 1,
@@ -203,10 +202,10 @@ export default function TestList({props}){
                         <td>{test.numb_task}</td>
                         <td>{test.numb_people}</td>
                         <td>{test.time}</td>
-                        <td><Link  to={"/createTest?edit=2"} state={post} > 
-                        <img src={"/Pict/Edit.png"} alt="edit" className="single__button"/></Link></td>
-                        {/*
-                        <td><img src="/Pict/Edit.png" alt="посмотреть детали" className='test-list__box__edit'/></td>*/}
+                       
+                        <td><NavLink  to={`createTest?edit=${test.id}`} state={post} > 
+                        <img src={"/Pict/Edit.png"} alt="edit" className="single__button"/></NavLink></td>
+                        
                     </tr>
                 )
             })
@@ -249,18 +248,19 @@ export default function TestList({props}){
             {listTest.length === 0 ? <div className='list_test_null-LookResultTest'>
                 <img src="/Pict/Folder.png" alt="пока нет тестов"/> 
                 <div className='text-LookResultTest'>
-                    <h2>Тестов пока нет</h2>
-                    <div className='add_test-LookResultTest' onClick={()=>navigate("/createTest")}>
-                        <button >Создать новый </button>
-                        <img src="/Pict/Add.png" alt="+"/> 
-                    </div>
+                    <p>Тестов пока нет</p>
+                  
+                        <button onClick={()=>navigate("createTest")} className='add_test-LookResultTest'>Создать новый  <img src="/Pict/Add.png" alt="+"/> </button>
+                       
+                   
                 </div>
             </div> :
             <>
         
         <div className='test-list__container'>
+        <p className='result__title'>Список тестов</p>
                 <div className='test-list__navbar'>
-                <p className='result__title'>Список тестов</p>
+                
                     <div className='test-list__navbar__find'>
                         <img src="/Pict/Search.png" alt='поиск' />
                         <input type='text' placeholder='Найти' onChange={(e)=>setInput(e.target.value)}/>
@@ -269,13 +269,13 @@ export default function TestList({props}){
             
           
                     <div className="test-list__buttons">
-                        <button className='test-list__buttons__add'  onClick={()=>navigate("/createTest")} >
+                        <button className='test-list__buttons__add'  onClick={()=>navigate("createTest")} >
                             <p>Создать новый</p>
                             <img src="/Pict/plus.png" alt='назначить тест'/>
                         </button>
                         <button disabled={!active} className={active?'test-list__buttons__delete test-list__buttons__delete_active': 'test-list__buttons__delete test-list__buttons__delete_disabled' } onClick={(e)=>  setIsDelete(true)}>
                             <p>Удалить</p>
-                            <img src="/Pict/DeletePers.png" alt='удалить пользователя'/>
+                         <img src="/Pict/DeletePers.png" alt='удалить пользователя'/>
                         </button>
                     </div>
                 </div>

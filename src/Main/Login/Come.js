@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import { useContext } from "react";
+//import { useContext } from "react";
 
 
 import { useNavigate } from 'react-router-dom';
 
-import axios from 'axios';
+//import axios from 'axios';
 
-import { AuthContext } from "../../context/authContext";
+//import { AuthContext } from "../../context/authContext";
 
-import Password from './Reduction_Password';
+//import Password from './Reduction_Password';
 
 
 import "./Come.css";
@@ -17,12 +17,13 @@ import Reduction_Password from './Reduction_Password.js';
 export default function Come(){
   useEffect(()=>{
     document.title = 'Вход'
+   
   }, [])
   const [isOpen, setIsOpen] = useState(false);
  
   const [error, setError] = useState("")
   const navigate = useNavigate()
-  const { login } = useContext(AuthContext);
+  //const { login, setAdmin } = useContext(AuthContext);
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -38,19 +39,21 @@ export default function Come(){
   }
   
   const handleSubmit = async e=>{
-   /*
-    e.preventDefault()
+   
+   //e.preventDefault()
+  /*
     try{
      
       await login(inputs)
      // console.log(res.data)
-      navigate("/")
+      navigate("/test")
+      window.location.reload();
     }
     catch(err){
      setError(err.response.data)
-   
+  
     }*/
-    navigate("/")
+    navigate("/test")
   }
    return(
     <div className='come'>

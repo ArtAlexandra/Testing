@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import AssignTest from './AssignTest';
 import NewPerson from './NewPersone';
-import DeleteTest from '../Main/Tests/DeleteTest';
+
 
 import 'reactjs-popup/dist/index.css';
 import "./Users.css"
@@ -13,11 +13,11 @@ export default function Users(){
     useEffect(()=>{
         document.title = 'Список пользователей'
     }, [])
+    const [active, setActive] = useState(false)
 
     const [isAdd, setIsAdd] = useState(false)
-    const [deleteUsers, setDeleteUsers] = useState([])
-    const [agree, setAgree] =useState(false)
-   const [id, setId] = useState(0)
+
+   const [id, setId] = useState([])
     const [newUser, setNewUser] = useState({
         name: "",
         email: "",
@@ -31,14 +31,10 @@ export default function Users(){
     const [isDelete, setIsDelete] = useState(false)
     const [sort, setSort] = useState(true)
     const [task, setTask] = useState("")
-    let delete_users = []
-    const [a, setA] = useState([
-        {
-            id: 101, 
-            name: "nciwe"
-        },
+ 
+   
+    const tests = ["Тестировщик1", "Тестировщик2", "Тест"]
 
-    ])
 
     const people = [
     
@@ -64,7 +60,7 @@ export default function Users(){
             id:3,
             name: "Иванов Артём Михайлович",
             email: "artemivanoff@yandex.ru",
-            list_test : "-",
+            list_test : "",
         },
         {
             id:4,
@@ -105,41 +101,7 @@ export default function Users(){
       setTask("")
     }
 
-    const [m, setM]= useState([101, 112])
-    const Delete = () =>{
-       
-        setIsDelete(!isDelete)
-        let pers = []
-        let temp = {}
-        let d = [{
-            id: 101,
-            name: ""
-        }]
-            l.map((p)=>{
-                return(
-                     (p?.isChecked === true&& isDelete==="yes"? 
-                    (temp = {
-                        id: p.id,
-                        name: p.name
-                    },
-                    setM(o=>[...o,temp.id ]),
-                    d.push(temp)
-                  
-                    )
-                     :  pers.push(p) )
-                         
-                     
-               )})
-               setL(pers)
-              
-      console.log(a)
-     console.log("-----")
-     console.log(d)
-     console.log(m)
-    }
-
-     
-   
+  
    
     function Sort(){
         if(sort){
@@ -178,8 +140,14 @@ export default function Users(){
         }
 }
 
+
     const handleChange = (e)=>{
+      
         const {name, checked} = e.target
+        setActive(true)
+        setId([...id, e.target.value])
+
+
         if(name==="allSelect"){
             let temp= l.map((p)=>{
                 return{...p, isChecked:checked}} 
@@ -195,9 +163,7 @@ export default function Users(){
             setL(temp)
         }
     }
-const EditPerson = ()=>{
-    setIsAdd(true)
-}
+
 
     function Table(){
         return(
@@ -209,25 +175,23 @@ const EditPerson = ()=>{
                         <td > <input type="checkbox" 
                         onChange={handleChange}
                         checked={p?.isChecked || false}
-                        value={p.name}
+                        value={p.id}
                         name={p.name}
                         /></td>
                         <td>{p.name}</td>
-                        <td>{p.email}</td>
-                        <td>{p.list_test}</td>
-                        <td><img src="/Pict/Edit.png" alt="посмотреть детали" onClick={(e)=>{ setNewUser(prev=>({...prev,name: p.name})); setIsAdd(true)}}/></td>
+                        <td>{p.email? p.email: "\u2013\u2013"}</td>
+                        <td>{p.list_test? p.list_test: "\u2013\u2013"}</td>
+                        <td><img src="/Pict/Edit.png" alt="посмотреть детали" onClick={(e)=>{ setNewUser(prev=>({...prev,name: p.name, email: p.email, edit: true})); setIsAdd(true)}}/></td>
                     </tr>
                 )
             })
         )
     }
-
-
-    function FunctAddPersone(){
-        console.log(newUser)
-        setIsAdd(!isAdd)
-    }
-
+    const [input, setInput] = useState("")
+    useEffect(()=>{
+        const searchUser = l.filter(value => value.name.toLowerCase().includes(input.toLowerCase()))
+        setL(searchUser)
+    }, [input])
 
     return(
         <div className='users-Users'>
@@ -239,7 +203,7 @@ const EditPerson = ()=>{
                         <button > Добавить</button>
                         <img src="/Pict/PersonAdd.png" alt="+"/> 
                     </div>
-                    {isAdd? <NewPerson setAddPersone={setIsAdd} handleClose={FunctAddPersone} newUser={newUser} setNewUser={setNewUser}/>:null}
+                    {isAdd? <NewPerson setAddPersone={setIsAdd} tests={tests} newUser={newUser} setNewUser={setNewUser}/>:null}
 
                 </div> : 
                 <>
@@ -249,27 +213,30 @@ const EditPerson = ()=>{
                     
                         <div className='test-list__navbar__find'>
                             <img src="/Pict/Search.png" alt='поиск'/>
-                            <input type='text' placeholder='Найти'/>
+                            <input type='text' placeholder='Найти' onChange={(e)=>setInput(e.target.value)}/>
 
                         </div>
                         <div className='users__navbar__items'>
-                        <div className='users__navbar__add-test'  onClick={togglePopup} >
-                            <p>Назначить тест <img src="/Pict/LibraryAdd.png" alt='назначить тест'/></p>
+                      
+
+            <button  disabled={!active} className='users__navbar__add-test' onClick={togglePopup} >
+                            Назначить тест <img src="/Pict/LibraryAdd.png" alt='удалить пользователя'/>
                             
-                        </div>
-          
+                        </button>
+                        
             
                         <div className='users__navbar__button users__navbar__add' onClick={(e)=>setIsAdd(true)}>
                             <p>Добавить<img src="/Pict/PersonAdd.png" alt='назначить тест'/></p>
                             
-                        </div>
-                        <div className='users__navbar__button users__navbar__delete' onClick={Delete}>
-                           
-                            <p>Удалить  <img src="/Pict/DeletePers.png" alt='удалить пользователя'/></p>
-                        </div>
+            </div>
+                        <button  disabled={!active} className={active?'test-list__buttons__delete test-list__buttons__delete_active': 'test-list__buttons__delete test-list__buttons__delete_disabled' } onClick={(e)=>  setIsDelete(true)} >
+                            <p>Удалить</p>
+                            <img src="/Pict/DeletePers.png" alt='удалить пользователя'/>
+                        </button>
+                       
                         </div>
                     </div>
-
+                    {l.length===0 ? <p>Такой пользователь не найден</p>:
                     <div className='result__table-users'>
                         <table className='result__table'>
                             <thead>
@@ -291,11 +258,10 @@ const EditPerson = ()=>{
                             </tbody>
                         </table>
                     </div>
-      
-                    {isOpen? <AssignTest handleClose={togglePopup} setTask={setTask} setIsOpen={setIsOpen}/>:null}
-                    {isDelete?<DeletePerson setIsDelete={setIsDelete} setAgree={setAgree}/>:null}
-                    {/*  <DeleteTest setIsDelete={setIsDelete} handleClose={Delete} setTask={setIsDelete} />*/}
-                    {isAdd? <NewPerson setAddPersone={setIsAdd} handleClose={FunctAddPersone} newUser={newUser} setNewUser={setNewUser}/>:null}
+                    }
+                    {isOpen? <AssignTest id={id} tests={tests} handleClose={togglePopup} setTask={setTask} setIsOpen={setIsOpen}/>:null}
+                    {isDelete?<DeletePerson setIsDelete={setIsDelete}  id={id}/>:null}
+                    {isAdd? <NewPerson setAddPersone={setIsAdd} tests={tests} newUser={newUser} setNewUser={setNewUser}/>:null}
                    
                     </div>
                 </>

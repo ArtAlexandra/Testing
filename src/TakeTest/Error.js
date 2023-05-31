@@ -8,7 +8,7 @@ export default function Error({error, removeError}){
              
         <div >
             
-        <p>{error.text}</p>
+        <p  className='error-passed-test__title'>{error.text}</p>
      
         <div onClick={()=>removeError(error.id)} className="CloseButton">
         <CloseButton />

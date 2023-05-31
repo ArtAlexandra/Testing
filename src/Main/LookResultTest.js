@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import "./LookResultTest.css"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../TakeTest/Form"
 export default function LookResultTest(){
     const navigate = useNavigate(); 
@@ -19,6 +19,7 @@ export default function LookResultTest(){
             time: "32 мин",
             score: 83.4,
             estimation: "Зачет",
+            task:"Ниже представлен скриншот страницы товара интернет-магазина ru.puma.com, на котором продаются спортивная обувь, одежда и аксессуары.."
         },
         {
             id:1,
@@ -30,9 +31,13 @@ export default function LookResultTest(){
             time: "",
             score: 0,
             estimation: "",
+            task:"Ниже представлен скриншот страницы товара интернет-магазина ru.puma.com, на котором продаются спортивная обувь, одежда и аксессуары.."
+
         }
         
     ]
+
+    const {state} = useLocation();
     function Table(){
         return(
             
@@ -44,40 +49,38 @@ export default function LookResultTest(){
                            
                       <div className={p.status==="Завершен"? "LookResultTest-general_data1" : "LookResultTest-general_data2"}>
                        
-                    <h1>{p.name_test}</h1>
-                  <h3>Количество заданий:  </h3>
-                  <h3 className='Stroka_answer'>{p.number_of_tasks}</h3>
-                  <h3>Ограничение времени: </h3>
-                  <h3 className='Stroka_answer'>{p.time_limit}</h3>
-                  <h3>Статус: </h3>
+                    <p className='look-result-test__title-table'>{p.name_test}</p>
+                  <p className='look-result-test__main-table'>Количество заданий:  </p>
+                  <p className='Stroka_answer'>{p.number_of_tasks}</p>
+                  <p className='look-result-test__main-table'>Ограничение времени: </p>
+                  <p className='Stroka_answer'>{p.time_limit}</p>
+                  <p className='look-result-test__main-table'>Статус: </p>
                  
-                  <h3 className='Stroka_answer '>{p.status}</h3>
+                  <p className='Stroka_answer '>{p.status}</p>
                  
-                  {p.status==="Завершен"? null:<button onClick={()=>navigate("/passing")}>Пройти тест</button>}
+                  {p.status==="Завершен"? null:<button onClick={()=>navigate(`passing?id=${p.id}`, {state:{ p}})}>Пройти тест</button>}
                   </div>
                  
                   <div className='LookResultTest-result_test'>
-               <h1>Результат</h1>
-                    <h3>Дата: </h3>
-                    <h3 className='Stroka_answer'>{p.date===""? "-":p.date}</h3>
-                    <h3>Время: </h3>
-                    <h3 className='Stroka_answer'>{p.time===""? "-":p.time}</h3>
-                    <h3>Счет: </h3>
-                    <h3 className='Stroka_answer'>{p.score===0? "-":p.score+'%'}</h3>
-                    <h3>Оценка: </h3>
+               <p className='look-result-test__title-table'>Результат</p>
+                    <p className='look-result-test__main-table'>Дата: </p>
+                    <p className='Stroka_answer'>{p.date===""? "\u2013\u2013":p.date}</p>
+                    <p className='look-result-test__main-table'>Время: </p>
+                    <p className='Stroka_answer'>{p.time===""? "\u2013\u2013":p.time}</p>
+                    <p className='look-result-test__main-table'>Счет: </p>
+                    <p className='Stroka_answer'>{p.score===0? "\u2013\u2013":p.score+'%'}</p>
+                    <p className='look-result-test__main-table'>Оценка: </p>
                    
                    
-                    <h3 className='Stroka_answer'>{p.estimation===""? "-":
-                    p.estimation==="Зачет"?
-                     <div className='result_test'>
-                   { p.estimation}
-                    </div>
-                    :
-                    <div className='result_test_error'>
-                   { p.estimation}
-                    </div>
+                    <p className='Stroka_answer'>{p.estimation===""? "\u2013\u2013": null}</p>
+                    <p className='Stroka_answer result_test'>{ p.estimation==="Зачет"?  p.estimation: null}</p>
+                    <p className='Stroka_answer result_test_error'>{ p.estimation==="Незачет"?  p.estimation: null}</p>
+
+
+                   
+                  
                     
-                 } </h3>
+               
                    
                     </div>
                     </div>
@@ -89,25 +92,16 @@ export default function LookResultTest(){
     }
     return(
         <>
-        <div className='title'>
-        <h1>Доступные тесты</h1>
-        </div>
+        
         {people.length === 0 ? <div className='list_test_null-LookResultTest'>
-            <img src="/Pict/Clip path group.png" alt="пока нет тестов"/> 
-            {admin ? 
-            <div className='text-LookResultTest'>
-            <h2>Тестов пока нет</h2>
-            <div className='add_test-LookResultTest' onClick={()=>navigate("/createTest")}>
-            <button >Создать новый </button>
-            <img src="/Pict/Add.png" alt="+"/> 
-            </div>
-    </div> : 
+            <img src="/Pict/Folder.png" alt="пока нет тестов"/> 
+           
     <div className='text-people-LookResultTest'>
-            <h1>Доступных тестов пока нет</h1>
-            <h2>Возвращайтесь позже</h2>
+            <p>Доступных тестов пока нет</p>
+            <p className='text-people-LookResult_2'>Возвращайтесь позже</p>
             </div>
     
-        }
+        
             
             
             
@@ -119,7 +113,11 @@ export default function LookResultTest(){
             <img src="/Pict/Add.png" alt="+"/> 
             </div>
     </div>*/}
-            </div>:   Table()}
+            </div>:  
+            <div>
+            <p className='look-result-test__title'>Доступные тесты</p>
+            {Table()}
+            </div>}
           
         </>
     )

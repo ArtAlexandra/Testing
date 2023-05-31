@@ -5,6 +5,7 @@
     width: 80%;
     margin-left: 10%;
   }
+
 .sort {
   
     max-width: 15px;
@@ -19,25 +20,55 @@
     
 }
 .users__navbar{
-   
-    
+ 
     height: 40px;
     width: 100%;
    
     margin-bottom: 30px;
 
-    display: flex;
+    display:flex;
+}
+@media only screen and (max-width: 500px){
+    .users__navbar{
+        display: inline-block;
+    }
+    .users__navbar__button{
+        width: 300px;
+    }
+    .users__navbar__add{
+        width: 300px;
+    }
 }
 .users__navbar__items{
    
-    width: 60%;
+    
     display: flex;
     margin-left: auto;
+  margin-right: 0px;
+}
+
+@media (width< 1200px) {
+    .users__navbar__items{
+     
+        width: 550px;
+        margin-top: 15px;
+        margin-left: 0px;
+    }
+    .users__navbar{
+        height: 100px;
+        display: block;
+    }
+   
+}
+
+.users__navbar__add-test:disabled img{
+    -webkit-filter: brightness(0) invert(0.5);
+    filter: brightness(0) invert(0.5);
 }
 
 .users__navbar__add-test
 {
- 
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
    padding-bottom: 5px;
     font-weight: 400;
@@ -48,14 +79,16 @@
   
     background-color: #ffffff;
     
-   
+   text-align: left;
+   padding-left: 20px;
  border: none;
   justify-content: center;
   border-radius: 30px;
   cursor: pointer;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
  display: inline-block;
-  
+ margin-left: auto;
+ margin-right: 5px;
 }
 
 .users__navbar__add-test img{
@@ -77,11 +110,15 @@
 
 .users__navbar__button
 {
-   
-    font-size: 18px;
-   padding-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
+
+
+
+   padding-bottom: 5px;
+  
    
     width: 165px;
     height: 40px;
@@ -121,7 +158,8 @@
     margin-right: 0px;
 }
 .users__navbar__add{
-    margin-left: 10px;
+    margin-left: auto;
+    margin-right: -15px;
 }
 
 .table-Users img{

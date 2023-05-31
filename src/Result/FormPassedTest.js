@@ -22,7 +22,7 @@ export default function FormPassedTest(){
    const discription = state?.discription
    const selectedImage = state?.selectedImage
    useEffect(()=>{
-    document.title = `Результаты тестирования | ${state?.owner }`
+    document.title = `Результаты тестирования | ${state?.name }`
 }, [])
     function SeeNewTest(){
         
@@ -37,7 +37,7 @@ export default function FormPassedTest(){
    <h1 className='form-passed-test__title'>{nameTest}</h1>
    <div className='form-passed-test__title__button'>
     <div className='form-passed-test__title__button_name'>
-   <p >{state?.owner}</p>
+   <p >{state?.name}</p>
    </div>
  
    <button className='form-passed-test__title__button_exit' onClick={()=>navigate("/result")}>Завершить просмотр</button> 

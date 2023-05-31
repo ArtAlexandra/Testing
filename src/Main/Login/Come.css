@@ -6,9 +6,9 @@
 .come__navbar{
     background-color: #ffffff;
     font-size: 18px;
-   max-height: 100px;
-   max-width: 100%;
-   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    max-height: 100px;
+    max-width: 100%;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 .come__navbar img{
     margin: 0px auto;
@@ -25,18 +25,19 @@
 }
 
 .letter img{
-  width: 40%;
-  height: 40%;
-  margin-left: 130px;
+    width: 40%;
+    height: 40%;
+    margin-left: 130px;
 }
 
 
 .letter__text{
-    text-align: center;
-}
-.letter__text h2{
-    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
     font-size: 32px;
+    line-height: 39px;
+    text-align: center;
 }
 
 
@@ -55,54 +56,77 @@
 
 .login__button{
     width: 80%;
+    height: 45px;
     margin-left: 10%;
     border-radius: 30px;
     padding: 2%;
     background-color:  #FFDD00;
-    font-size: 18px;
     font-weight: bold;
     border: 0px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+
 }
 
 .login__link{
-    margin-top:5px;
+    margin-top:10px;
     position: relative;
     margin-left: 62%;
     text-decoration: underline;
     cursor: pointer;
+
+
+    font-family: 'Montserrat',sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
 }
 
 .login__text{
     margin-top: 30px;
     text-align: center;
     border: none;
+
+    font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 37px;
 }
 
 
 .login__input{
     border-radius: 30px;
     height: 50px;
-   width: 80%;
+    width: 80%;
     margin-left:10%;
     margin-top: 20px;
     padding-left: 30px;
-   border: 2px solid #E0E0E0;
-   outline:none;
+    border: 2px solid #E0E0E0;
+    outline:none;
+
+    font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
 }
 .login__input:focus-within {
     border: 2px solid #FFDD00;
 }
 .login__input_error{
-   
-    border: 2px solid #D8513C;
+   border: 2px solid #D8513C;
 }
 
 .login__error{
     height: 20px;
-   
     margin-bottom: -15px;
     font-size: 14px;
-  margin-left: 10%;
+    margin-left: 10%;
 }
 
 .login__error p{

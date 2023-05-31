@@ -4,9 +4,14 @@ import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
+  useNavigate,
+  Routes,
+  Route,
+  Navigate,
+ 
 } from "react-router-dom";
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 
 
@@ -20,7 +25,7 @@ import Users from './Users/Users';
 import Result from "./Result/Result";
 import Come from "../src/Main/Login/Come";
 
-import Main from "./Main/Main";
+
 import LookResultTest from "./Main/LookResultTest";
 
 import Form from "./TakeTest/Form";
@@ -30,32 +35,77 @@ import Footer from "./Main/Footer";
 import FormPassedTest from "./Result/FormPassedTest";
 import ErrorURL from "./ErrorURL";
 
+//import { AuthContext } from "./context/authContext";
+import NavBarUsers from "./Main/NavBarUsers";
+import TestList from "./Main/Tests/TestList";
 
 const Layout = () => {
   return (
     <>
      <Navibar/>
       <Outlet />
+     <Footer/>
+    </>
+  );
+};
+
+const LayoutUser = () => {
+  return (
+    <>
+    <NavBarUsers/>
+      <Outlet />
       <Footer />
     </>
   );
 };
 
+const Login = () => {
+  return (
+    <>
+   
+      <Outlet />
+     
+    </>
+  );
+};
+
+
+const login = createBrowserRouter([
+  {
+    path:"/",
+    element: <Login/>,
+    children: [
+      {
+        path: "/come",
+        element: <Come/>
+      }
+    ]
+  },
+  {
+    path:"*",
+  element: <Navigate to="/come" />
+  }
+])
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
+     
       {
         path: "/",
-        element: <Main/>
+        element: <Navigate to="/test" />
+      },
+      {
+        path: "/test",
+        element: <TestList/>
       },
       {
         path: "/result",
         element: <Result />
       },
       {
-        path: "/Users",
+        path: "/user",
         element: <Users />,
       },
       {
@@ -76,15 +126,49 @@ const router = createBrowserRouter([
       },
      
       {
-        path: "/createTest",
+        path: "test/createTest",
         element: <FormCreateTest/>
       },
+      
+    ],
+  },
+  {
+    path: "/come",
+    element: <Come />,
+  },
+  {
+    path: "*",
+    element:<ErrorURL/>
+  },
+  
+]);
+
+const routerUser = createBrowserRouter([
+  {
+    path: "/",
+    element: <LayoutUser/>,
+    children: [
+      {
+        path: "/",
+        element: <Navigate to="/test" />
+     
+      },
+      {
+        path: "/test",
+        element: <LookResultTest/>
+      },
+      {
+        path: "test/passing",
+         element: <Form/>
+      },
+     
+     
      
     ],
   },
   {
     path: "*",
-    element:<ErrorURL/>
+    element: <Navigate to="/test" />
   },
   {
     path: "/come",
@@ -93,45 +177,29 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  
+  /*
+  const { currentUser} = useContext(AuthContext);
 
-
+  console.log(currentUser)
+*/
   return (
     <>
    
-     <div>
-   
-        <RouterProvider router={router} />
-      </div>
-   {/*
-    <NaviBar/> 
-   
+        <div>
+          
+       
+           
+            <RouterProvider router={router} /> 
+
+            {/*
+            
+            {!currentUser?  <RouterProvider router={login} /> :
+            currentUser.role==="admin"? <RouterProvider router={router} /> :  <RouterProvider router={routerUser} /> }
+            */}
+             
+        </div>
   
-     <Router>
-     <Routes>
-      
-      <Route path="/DoTest" element={<DoTest/>}/>
-      <Route path="/DoTest2" element={<DoTest2/>}/>
-      
-
-
-      <Route path="/" element={<Main />} />
-        <Route path="/Result" element={<Result />} />
-        <Route path="/Users" element={<Users />} />
-        
-         
-        <Route path="/Come" element={<Come />} />
-        
- 
-  <Route path="/LookResultTest" element={<LookResultTest/>}/>
-  <Route path="/passing" element={<Form/>}/>
-  <Route path="/createTest" element={<FormCreateTest/>}/>
-
-      </Routes>
-      </Router>
-   
-  */}
 
      </>
   );}
-//}
+

@@ -1,11 +1,15 @@
 import React from 'react'
 import "./DeletePerson.css"
+import { useEffect } from 'react'
 
 
-export default function DeletePerson({setIsDelete, setAgree}){
- 
+export default function DeletePerson({setIsDelete,id}){
+    useEffect(()=>{
+        if(!id) setIsDelete(false)
+    }, [])
     const  delete_persone =()=>{
-        setAgree(true)
+       
+        console.log(id)
         setIsDelete(false)
     }
     return(

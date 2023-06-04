@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './NewTest.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -9,29 +9,27 @@ import Error from '../TakeTest/Error';
 
 import Img from './Img';
 
-import { Stage, Layer, Text, Group, Rect, Transformer} from 'react-konva';
-import { Image } from 'konva/lib/shapes/Image';
+import { Stage, Layer, Text, Group, Rect, Transformer, Image} from 'react-konva';
 
 import useImage from 'use-image';
-const TestImage = ({selectedImage}) => {
+
+const TestImage = ({selectedImage, editImage}) => {
  
  
-  //  var blobObj = new Blob([selectedImage], { type: "image/png" });
-   //var url = window.URL.createObjectURL(blobObj);
-  
-  //const [image] = useImage(selectedImage);//"/Pict/p_1.png"
- // <Img src={selectedImage} width={900} height={657} space="fill"/>
-
-//const [image] = useImage(selectedImage);//"/Pict/p_1.png"
-
+const [image] = useImage("/Pict/p_1.png");
   return (
-    <Img src={selectedImage}  width={900} height={657} space="fill"/>
-
+    <>
+    {editImage? <Img src={selectedImage}  width={900} height={657} space="fill"/>:
+  
+    <Image image={image}  width={900} height={657}/>
+  }
+</>
   );
 };
 
 
-function Rectangles({rectangles,setRectangles, selectedImage, selectedId, selectShape}){
+
+function Rectangles({editImage, rectangles,setRectangles, selectedImage, selectedId, selectShape}){
 
   
 
@@ -43,7 +41,7 @@ function Rectangles({rectangles,setRectangles, selectedImage, selectedId, select
   
  return(
   <Layer>
-    <TestImage selectedImage={url}/>
+    <TestImage selectedImage={url} editImage={editImage}/>
    
   {rectangles.map((rect, i) => {
     return (
@@ -146,7 +144,7 @@ const Rect_ = ({ shapeProps, isSelected, onSelect, onChange }) => {
   );
 };
 
-export default function NewTest({ errorPoint, setErrorPoint, mainText, setMainText, selectedImage, setSelectedImage,Data, setData, numb, setNumb }){
+export default function NewTest({editImage, setEditImage, setNameSelectedImage, errorPoint, setErrorPoint, mainText, setMainText, selectedImage, setSelectedImage,Data, setData, numb, setNumb }){
     
 
     const [text12, setText12] = useState("")
@@ -219,39 +217,6 @@ export default function NewTest({ errorPoint, setErrorPoint, mainText, setMainTe
   const [selectedId, selectShape] = React.useState(null);
 
 
-
-
-
-  /*
-  var reader = new FileReader();
-  reader.readAsDataURL(new Blob([new Uint8Array(IDBRequest)]));
-  reader.onloadend = function () {
-  var base64String = reader.result;
-
- setSelectedImage(base64String)
-  }*/
-  
- // var blobObj = new Blob([selectedImage], { type: "image/png" });
-  //var url = window.URL.createObjectURL(blobObj);
- 
-  /*
-useEffect(()=>{
- var blobObj = new Blob([iq], { type: "image/png" });
-   url = window.URL.createObjectURL(blobObj);
-}, [iq])*/
-
-const D=(e)=>{
-
- 
-  console.log(selectedImage)
-
- //setSelectedImage(e.target.files[0])
- /*
- var blobObj = new Blob([e.target.files[0]], { type: "image/png" });
-   url = window.URL.createObjectURL(blobObj);
-   setSelectedImage(url)*/
-}
-
 const inputRef = useRef()
 
   const handleDragOver = (event) => {
@@ -261,20 +226,9 @@ const inputRef = useRef()
   const handleDrop = (event) => {
     event.preventDefault();
     setSelectedImage(event.dataTransfer.files[0])
+    setEditImage(true)
   };
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("Files", selectedImage);
-    console.log(formData.getAll())
-    // fetch(
-    //   "link", {
-    //     method: "POST",
-    //     body: formData
-    //   }  
-    // )
-  };
-  
     return(
 
         <>
@@ -310,9 +264,7 @@ const inputRef = useRef()
         </div>
          <p>Добавить изображение</p>
          </>
-         
-          
-        {/*<button onClick={() => inputRef.current.click()}>Select Files</button>*/}
+        
         
         </div>
           }
@@ -334,7 +286,7 @@ onDblClick={(e) => createRectangle(e)}
   <Rectangles rectangles={rectangles}
   setRectangles={setRectangles} selectedImage={selectedImage}
   selectedId={selectedId} selectShape={selectShape}
- 
+  editImage={editImage}
   />
 
 </Stage>
@@ -347,15 +299,7 @@ onDblClick={(e) => createRectangle(e)}
  
         </div>
       
-{/*}
-            <input
-            type="file"
-            name="myImage"
-            accept="image/png, image/jpeg"
-          
-            onChange={(e)=>setSelectedImage(e.target.files[0])}
-/>*/}
-          </div>
+    </div>
          
           <div>
             <div className='new-test__error-description'>
@@ -422,3 +366,5 @@ onDblClick={(e) => createRectangle(e)}
       </>
     )
 }
+
+

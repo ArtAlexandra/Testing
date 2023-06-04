@@ -30,9 +30,10 @@ export default function NavBarUsers() {
   const { currentUser, logout} = useContext(AuthContext);
   const navigate = useNavigate()
   const handleSubmit = async e=>{
-   // navigate("/come")
+    navigate("/come")
    
-   // e.preventDefault()
+   /*e.preventDefault()
+
     try{
      
         const res = logout();
@@ -42,29 +43,17 @@ export default function NavBarUsers() {
     catch(err){
      console.log(err.response.data)
    
-    }
+    }*/
   }
-  
-  //<Navbar className="navbar__item">
+
  
   return (
     <nav className="navbar-user">
-       
-      
-       
-       
         <div className='navbar__image navbar-user__image' onClick={()=>navigate("/test")}>
-      </div>
-    
-     
-        
-      
-              <div   className={"navbar__dropdown navbar-user__button"}  onClick={(e)=>handleSubmit(e)} >
-              <b>Вячеслав Блинский</b >{/*{currentUser?.username} */}
-              </div>
-              
-           
-    
+        </div>
+        <div  className={"navbar__dropdown navbar-user__button"}  onClick={(e)=>handleSubmit(e)} >
+            <b>Вячеслав Блинский</b >{/*{currentUser?.username} */}
+        </div>
     </nav>
   )
 }

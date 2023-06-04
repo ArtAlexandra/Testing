@@ -80,10 +80,10 @@
 
 
     font-family: 'Montserrat',sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
 }
 
 .login__text{
@@ -92,28 +92,29 @@ line-height: 15px;
     border: none;
 
     font-family: 'Montserrat', sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 37px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
 }
 
 
 .login__input{
-    border-radius: 30px;
+    
     height: 50px;
     width: 80%;
     margin-left:10%;
     margin-top: 20px;
     padding-left: 30px;
+    border-radius: 30px;
     border: 2px solid #E0E0E0;
     outline:none;
 
     font-family: 'Montserrat', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
 }
 .login__input:focus-within {
     border: 2px solid #FFDD00;

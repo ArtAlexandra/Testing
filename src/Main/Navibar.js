@@ -31,7 +31,6 @@ export default function Navibar() {
   //const { currentUser, logout} = useContext(AuthContext);
   const navigate = useNavigate()
   const handleSubmit = async e=>{
-
    /*
     e.preventDefault()
     try{
@@ -56,7 +55,6 @@ export default function Navibar() {
        
       <Navbar className="navbar__item">
         <div className='navbar__image'>
-     {/* <img src="/Pict/label.png" alt="label" />*/}
       </div>
         <Nav >
         
@@ -79,6 +77,3 @@ export default function Navibar() {
   )
 }
 
-
-
-// <img src="/Pict/Exit.png" alt="exit" />

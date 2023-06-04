@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Error from './Error';
-//import ListError from './ListError';
+
 export default function ErrorDescription() {
  
   const [number, setNumber] = useState(false)
@@ -15,8 +15,7 @@ export default function ErrorDescription() {
 
   const [todos, setTodos] = useState([]);
 
- // const todos = Todos
- // const setTodos= SetTodos
+
   function removeError(id){
     setTodos([...todos.filter((todo)=>todo.id!==id)])
   }
@@ -40,64 +39,61 @@ export default function ErrorDescription() {
   
  
   return (
-    <div>
-       <div className="form_error">
-    <Form >
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-       <h1>Описание ошибки</h1>
-        <Form.Control type="text" placeholder="Краткое описание" value={moreText} onChange={(e)=>setMoreText(e.target.value)} />
-      </Form.Group>
-      <Row className="g-3">
-      <Col md>
-      <Form.Select aria-label="Default select example"  value={text1 || ""}onChange={(e)=>setText1(e.target.value)}>
-      <option  > Тип ошибки</option>
-      <option value="логическая" >логическая</option>
-      <option value="типографическая (орфографические, пунктуационные)
-" >типографическая (орфографические, пунктуационные)
-</option>
-      <option value="ошибка в отрисовке интерфейса"  >ошибка в отрисовке интерфейса</option>
-      <option value="ошибка контента" >ошибка контента</option>
-    </Form.Select>
-    </Col>
-    <Col md>
-    <Form.Select aria-label="Default select example" value={text2 || ""} onChange={(e)=>setText2(e.target.value)}>
-      <option >Серьёзность</option>
-      <option value="критична">критична</option>
-      <option value="не критична">не критична</option>
-      
-    </Form.Select>
-    </Col>
-    <Col md>
-    <Button varient="primary" onClick={()=>{Clear()}} >Записать ошибку</Button>
-    </Col>
-    </Row>
-    </Form>
-    </div>
-    <h1>Список ошибок:</h1>
-    
+      <div>
+          <div className="form_error">
+              <Form >
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                      <h1>Описание ошибки</h1>
+                          <Form.Control type="text" placeholder="Краткое описание" value={moreText} onChange={(e)=>setMoreText(e.target.value)} />
+                  </Form.Group>
+                  <Row className="g-3">
+                      <Col md>
+                          <Form.Select aria-label="Default select example"  value={text1 || ""}onChange={(e)=>setText1(e.target.value)}>
+                              <option  > Тип ошибки</option>
+                              <option value="логическая" >логическая</option>
+                              <option value="типографическая (орфографические, пунктуационные)" >
+                                типографическая (орфографические, пунктуационные)
+                              </option>
+                              <option value="ошибка в отрисовке интерфейса"  >ошибка в отрисовке интерфейса</option>
+                              <option value="ошибка контента" >ошибка контента</option>
+                          </Form.Select>
+                      </Col>
+                      <Col md>
+                          <Form.Select aria-label="Default select example" value={text2 || ""} onChange={(e)=>setText2(e.target.value)}>
+                              <option >Серьёзность</option>
+                              <option value="критична">критична</option>
+                              <option value="не критична">не критична</option>
+                          </Form.Select>
+                      </Col>
+                      <Col md>
+                          <Button varient="primary" onClick={()=>{Clear()}} >Записать ошибку</Button>
+                      </Col>
+                  </Row>
+              </Form>
+          </div>
+          <h1>Список ошибок:</h1>
+              {
+                  number?
+                      <>
+                          {
+                              todos.map((todo)=>{
+                                return(
+                                    <Error  
+                                    error={todo}
+                                    key={todo.id}
+                                    removeError = {removeError}
+                                    />
+                                );
+                              })
+                          }
 
-{
-  number?
-   <>
-   {
-            todos.map((todo)=>{
-                return(
-                   <Error  
-                   error={todo}
-                   key={todo.id}
-                   removeError = {removeError}
-                   />
-                );
-            })
-        }
+                      </>:
+                      <div className="Error">
+                          <h1>Пока что здесь пусто</h1>
+                      </div>
+            }
 
-  </>:
-  <div className="Error">
-  <h1>Пока что здесь пусто</h1>
-  </div>
-}
-
-</div>
+      </div>
   );
 }
 

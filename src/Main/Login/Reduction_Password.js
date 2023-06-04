@@ -18,7 +18,7 @@ export default function Reduction_Password({handleClose,  setIsOpen}){
                 <div className="box">
                    
                     <div className='box__title'>
-                        <h1>Восстановление пароля</h1>
+                        <p>Восстановление пароля</p>
                         <CloseButton onClick={handleClose}  className='box__button_close'/>
                     </div>
                     <div className={notPersone? 'box__input_error box__input':'box__input'}>
@@ -26,7 +26,7 @@ export default function Reduction_Password({handleClose,  setIsOpen}){
                      onChange={(e)=>setErrorPassword(e.target.value)} />
                      </div>
                      <div className='box__error'>
-                    {notPersone? <p>Профиль не существует</p>: null}
+                    {notPersone? <p>Профиль не существует</p>: <p></p>}
                     </div>
                     <button className='box__button' onClick={handleSubmit }>Отправить</button>
                 </div>

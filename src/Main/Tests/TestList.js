@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import {Link, useNavigate, useLocation, NavLink } from "react-router-dom";
 
 
@@ -55,9 +55,11 @@ export default function TestList({props}){
    
     const [tests, setTests] = useState(listTest)
     const [deleteTest, setDeleteTest] = useState([])
+    const [id, setId] = useState([])
     const handleChange = (e)=>{
         const {name, checked} = e.target
         setActive(true)
+        setId([...id, e.target.value])
         if(name==="allSelect"){
             let temp= tests.map((p)=>{
             return{...p, isChecked:checked}} 
@@ -186,7 +188,7 @@ export default function TestList({props}){
     }, [postId])
     function Table(){
         return(
-            tests.map((test)=>{
+            filteredItems.map((test)=>{
                 return(
                   
                     <tr key={test.id + test.name}>
@@ -232,16 +234,19 @@ export default function TestList({props}){
     
    
     useEffect(()=>{
-        const searchTest = tests.filter(value => value.name.toLowerCase().includes(input.toLowerCase()))
-
-        setTests(searchTest)
-        
+   /*     
         if(agree) {
             Delete()
-        }
+        }*/
         if(deleteTest.length) console.log(deleteTest)
-    }, [input,del, agree])
-        
+    }, [del, agree])
+  
+     const filteredItems = useMemo(() => {
+        return tests.filter(item => {
+          return item.name.toLowerCase().includes(input.toLowerCase())
+        })
+      }, [tests,  input])
+
         
     return(
         <div>
@@ -280,7 +285,7 @@ export default function TestList({props}){
                     </div>
                 </div>
 
-                {tests.length===0? <p>Такой тест не найден</p>:
+                {filteredItems.length===0? <p>Такой тест не найден</p>:
                     <div className='result__table-users'>
                         <table className='result__table'>
                             <thead >
@@ -308,7 +313,7 @@ export default function TestList({props}){
                     </div>
                 }
                
-                {isDelete? <DeleteTest setIsDelete={setIsDelete}  setAgree={setAgree}/>:null}
+                {isDelete? <DeleteTest id={id} setIsDelete={setIsDelete}  setAgree={setAgree}/>:null}
                 </div>
             </>}
 

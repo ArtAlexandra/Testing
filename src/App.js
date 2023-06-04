@@ -35,7 +35,7 @@ import Footer from "./Main/Footer";
 import FormPassedTest from "./Result/FormPassedTest";
 import ErrorURL from "./ErrorURL";
 
-//import { AuthContext } from "./context/authContext";
+import { AuthContext } from "./context/authContext";
 import NavBarUsers from "./Main/NavBarUsers";
 import TestList from "./Main/Tests/TestList";
 
@@ -189,13 +189,14 @@ export default function App() {
           
        
            
-            <RouterProvider router={router} /> 
+        <RouterProvider router={router} /> 
+           
 
             {/*
             
             {!currentUser?  <RouterProvider router={login} /> :
             currentUser.role==="admin"? <RouterProvider router={router} /> :  <RouterProvider router={routerUser} /> }
-            */}
+  */}
              
         </div>
   

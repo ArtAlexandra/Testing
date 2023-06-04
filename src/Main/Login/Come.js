@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-//import { useContext } from "react";
+import { useContext } from "react";
 
 
 import { useNavigate } from 'react-router-dom';
 
-//import axios from 'axios';
+import axios from 'axios';
 
-//import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/authContext";
 
 //import Password from './Reduction_Password';
 
@@ -23,7 +23,7 @@ export default function Come(){
  
   const [error, setError] = useState("")
   const navigate = useNavigate()
-  //const { login, setAdmin } = useContext(AuthContext);
+  const { login, setAdmin } = useContext(AuthContext);
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -39,9 +39,9 @@ export default function Come(){
   }
   
   const handleSubmit = async e=>{
-   
-   //e.preventDefault()
-  /*
+   /*
+   e.preventDefault()
+  
     try{
      
       await login(inputs)

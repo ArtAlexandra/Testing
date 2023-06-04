@@ -8,8 +8,8 @@ export default function ErrorURL(){
     return(
         <>
         <div className="ErrorURL__container">
-        <p className="ErrorURL__404">404</p>
-        <p className="ErrorURL__text">Эта страница не найдена</p>
+            <p className="ErrorURL__404">404</p>
+            <p className="ErrorURL__text">Эта страница не найдена</p>
         </div>
         </>
     )

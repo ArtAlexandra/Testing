@@ -3,13 +3,12 @@
     height: 100%;
     margin-left: 10%;
     margin-right: 10%;
-   
-position: relative;
-font-family: 'Montserrat', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 24px;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
 
 }
 
@@ -33,15 +32,12 @@ line-height: 24px;
 
 }
 .title-form{
-   margin-top: 30px;
-   margin-left: 81.5%;
+    margin-top: 30px;
+    margin-left: 81.5%;
     width: 200px;
     height: 50px;
-   border-radius: 30px;
+    border-radius: 30px;
     display: flex;
-    
-
- 
     background-color: darkgray;
 
 }
@@ -57,7 +53,7 @@ line-height: 24px;
     width: 50px;
     height: 50px;
     padding: 10px;
-  z-index: 2;
+    z-index: 2;
  
 }
 .title-form2{

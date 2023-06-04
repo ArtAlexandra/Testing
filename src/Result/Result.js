@@ -1,4 +1,4 @@
-import React, {useEffect, useState}  from 'react'
+import React, {useEffect, useMemo, useState}  from 'react'
 import {Link, NavLink} from "react-router-dom";
 import {useNavigate, useLocation } from "react-router-dom";
 
@@ -213,15 +213,15 @@ export default function Result({props}){
        
        ];
     const [input, setInput] = useState("")
-    
-    useEffect(()=>{
-        const searchUser = l.filter(value => value.name.toLowerCase().includes(input.toLowerCase()))
+   
+const [l, setL] = useState(people)
+     const filteredItems = useMemo(() => {
+        return l.filter(item => {
+          return item.name.toLowerCase().includes(input.toLowerCase())
+        })
+      }, [l,  input])
 
-       setL(searchUser)
        
-     }, [input])
-
-        const [l, setL] = useState(people)
         function SortEstimation(e){
             const estimation = e.target.value
        
@@ -318,7 +318,7 @@ export default function Result({props}){
     function Table(){
 
         return(
-            l.map((p)=>{
+            filteredItems.map((p)=>{
                
                 return(
                   
@@ -346,6 +346,7 @@ export default function Result({props}){
             })
         )
        }
+    
      
     return(
         <>
@@ -420,7 +421,7 @@ export default function Result({props}){
                 </div>
                  
             </div>
-                {l.length===0? <p>Такой пользователь не найден</p>:
+                {filteredItems.length===0? <p>Такой пользователь не найден</p>:
             <div className='result__table-users'>
                 <table className='result__table'>
                     <thead >

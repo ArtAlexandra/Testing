@@ -64,8 +64,9 @@ export default function NewPersone({setAddPersone,tests, newUser, setNewUser}){
                             })
                         }
                     </Form.Select>
-
-                    <button className='new-persone__box__button' onClick={AddUser}>Добавить пользователя</button>
+                        {newUser?.edit ?  <button className='new-persone__box__button' onClick={AddUser}>Сохранить изменения</button>:
+                        <button className='new-persone__box__button' onClick={AddUser}>Добавить пользователя</button> }
+                    
                 </div>
     
             </div>

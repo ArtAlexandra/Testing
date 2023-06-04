@@ -36,8 +36,10 @@ export default function Form(){
         console.log(Math.abs(hour2-hour1))
         console.log(Math.abs(minutes2-minutes1))
         console.log(Math.abs(seconds2-seconds1))
+        
         navigate("/test")
     }
+    
    
     const state= useLocation().state
 

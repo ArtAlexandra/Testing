@@ -1,14 +1,21 @@
-
+*{
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
 .title-DeletePerson{
     width: 600px;
+    height: 80px;
+    padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+
 }
-.box-DeletePerson{
-    width: 600px;
-    height: 600px;
-}
-.popup-box h1{
+
+.popup-box p{
     margin-left: 15%;
     margin-top: 30px;
     width: 500px;
@@ -47,6 +54,7 @@
     top: 0;
     left: 0;
 }
+
   
 .box-DeletePerson {
     position: relative;
@@ -60,7 +68,10 @@
     border: 1px solid #999;
     overflow: auto;
 }
-  
+
+.box-DeletePerson input{
+    border: 2px solid #E0E0E0;
+}
 .close-icon-DeletePerson { 
     right: calc(15% - 30px);
     top: calc(100vh - 85vh - 33px);
@@ -76,9 +87,9 @@
 .CloseButton-DeletePerson{
     width: 40px;
     height: 40px;
-    font-size: 30px;
-    margin-left: 90%;
-    margin-top: -55px;
+    font-size: 25px;
+    margin-left: 97%;
+    margin-top: -90px;
     display: block;
     
 }
@@ -86,7 +97,14 @@
     display: flex;
     margin-top: 30px;
     margin-left: 5%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
    
+}
+.deteil p{
+    padding-top:    15px;
 }
 .input1{
     width: 80px;
@@ -97,16 +115,19 @@
    
     margin: 10px;
 }
-.input2{
-    margin-left: 100px;
+.save-test__empty{
+    display: flex;
+    margin-left: auto;
+    margin-right: 5%;
 }
-.nameTest{
+
+.save-test__nameTest{
     width: 600px;
     height: 50px;
     border: 1px solid black;
     border-radius: 30px;
     padding: 20px;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 5%;
    
 
@@ -120,6 +141,10 @@
     background-color:#FFDD00 ;
     font-weight: bold;
     margin-top: 50px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .butAddError{
@@ -127,3 +152,4 @@
     margin-left: 75%;
    
 }
+

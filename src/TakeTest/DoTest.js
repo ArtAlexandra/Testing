@@ -18,10 +18,7 @@ import { useLocation } from 'react-router-dom';
 
 const MyImage = ({selectedImage}) => {
  
- 
-    //var blobObj = new Blob([selectedImage], { type: "image/png" });
-   // var url = window.URL.createObjectURL(blobObj);
- 
+
    const [image] = useImage(selectedImage);
     return (
      
@@ -142,9 +139,7 @@ export default function DoTest({Todos, SetTodos, number, setNumber}) {
                     </Stage>
                 </div>
             </div>
-          {/*}
-            <div className='first-part-newTest'>
-  </div>*/}
+         
             <div>
                 <ToastContainer floatingTime={5000} />
                 <div className='new-test__error-description'>

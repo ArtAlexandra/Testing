@@ -8,6 +8,7 @@ import 'reactjs-popup/dist/index.css';
 import "./Users.css"
 import DeletePerson from './DeletePerson';
 import { useEffect } from 'react';
+import { useMemo } from 'react';
 
 export default function Users(){
     useEffect(()=>{
@@ -167,7 +168,7 @@ export default function Users(){
 
     function Table(){
         return(
-            l.map((p)=>{
+            filteredItems.map((p)=>{
                 return(
               
                     <tr key={p.id + p.name}>
@@ -188,10 +189,12 @@ export default function Users(){
         )
     }
     const [input, setInput] = useState("")
-    useEffect(()=>{
-        const searchUser = l.filter(value => value.name.toLowerCase().includes(input.toLowerCase()))
-        setL(searchUser)
-    }, [input])
+   
+    const filteredItems = useMemo(() => {
+        return l.filter(item => {
+          return item.name.toLowerCase().includes(input.toLowerCase())
+        })
+      }, [l, input])
 
     return(
         <div className='users-Users'>
@@ -236,7 +239,7 @@ export default function Users(){
                        
                         </div>
                     </div>
-                    {l.length===0 ? <p>Такой пользователь не найден</p>:
+                    {filteredItems.length===0 ? <p>Такой пользователь не найден</p>:
                     <div className='result__table-users'>
                         <table className='result__table'>
                             <thead>

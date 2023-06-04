@@ -23,11 +23,10 @@
  
     height: 40px;
     width: 100%;
-   
     margin-bottom: 30px;
-
     display:flex;
 }
+
 @media only screen and (max-width: 500px){
     .users__navbar{
         display: inline-block;
@@ -44,7 +43,7 @@
     
     display: flex;
     margin-left: auto;
-  margin-right: 0px;
+    margin-right: 0px;
 }
 
 @media (width< 1200px) {
@@ -70,7 +69,7 @@
 {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
-   padding-bottom: 5px;
+    padding-bottom: 5px;
     font-weight: 400;
     font-size: 20px;
    
@@ -79,16 +78,16 @@
   
     background-color: #ffffff;
     
-   text-align: left;
-   padding-left: 20px;
- border: none;
-  justify-content: center;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
- display: inline-block;
- margin-left: auto;
- margin-right: 5px;
+    text-align: left;
+    padding-left: 20px;
+    border: none;
+    justify-content: center;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 5px;
 }
 
 .users__navbar__add-test img{
@@ -96,42 +95,36 @@
     display: block;
     margin-left: auto;
     margin-right: 15px;
- margin-top: -25px;
+    margin-top: -25px;
     cursor: pointer;
 }
 
 .users__navbar__add-test p{
     width: 80%;
-   margin-left: 25px;
-   margin-top: 5px;
- display: inline-block;
+    margin-left: 25px;
+    margin-top: 5px;
+    display: inline-block;
 }
 
-
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 .users__navbar__button
 {
-    font-family: 'Montserrat', sans-serif;
+
+    width: 165px;
+    height: 40px;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-
-
-
-   padding-bottom: 5px;
-  
-   
-    width: 165px;
-    height: 40px;
-  
+    padding-bottom: 5px;
     background-color: #ffffff;
-    
-   
- border: none;
-  justify-content: center;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
- display: inline-block;
+    border: none;
+    justify-content: center;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: inline-block;
   
 }
 
@@ -140,16 +133,15 @@
     display: block;
     margin-left: auto;
     margin-right: 15px;
- margin-top: -25px;
+    margin-top: -25px;
     cursor: pointer;
 }
 
 .users__navbar__button p{
     width: 80%;
-   margin-left: 25px;
-   margin-top: 5px;
- display: inline-block;
-
+    margin-left: 25px;
+    margin-top: 5px;
+    display: inline-block;
 }
 
 
@@ -173,11 +165,10 @@
     display: inline-block;
     background-color: #ddd;
     margin-left: 20px;
-  
-  justify-content: center;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 .delete-Users img{
     width: 20px;
@@ -198,15 +189,13 @@
     display: inline-block;
     height: 40px;
     width: 140px;
-    
     background-color: #ddd;
     margin-left: 20px;
-    
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-  cursor: pointer;
-  
+    border-radius: 30px;
+    cursor: pointer;
 }
+
 .add-Users img{
     width: 20px;
     height: 20px;
@@ -221,8 +210,8 @@
     display: block;
     margin-top: 10px;
     margin-left: 15px;
-   
 }
+
 .test-Users{
     width: 170px;
     height: 40px;
@@ -230,8 +219,8 @@
     background-color: #ddd;
     margin-left: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-  cursor: pointer;
+    border-radius: 30px;
+    cursor: pointer;
 }
 .test-Users img{
     width: 20px;
@@ -253,11 +242,10 @@
     width: 350px;
     height: 35px;
     background-color: white;
-   padding: 5px;
-   border-radius: 30px;
-  
-   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-   border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border: 1px solid #ddd;
 }
 .find-users-Users img{
     width: 20px;

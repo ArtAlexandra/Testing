@@ -2,7 +2,7 @@ import React from 'react';
 import "./DoTest.css";
 import CloseButton from 'react-bootstrap/CloseButton';
 export default function Error({error, removeError}){
-    //<div className="error-3">
+
     return(
         <div className="Error">
              

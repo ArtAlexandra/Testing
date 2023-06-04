@@ -31,28 +31,18 @@ export default function FormPassedTest(){
        
     }
     return(
-       
-       
-       <div className='form'>
-   <h1 className='form-passed-test__title'>{nameTest}</h1>
-   <div className='form-passed-test__title__button'>
-    <div className='form-passed-test__title__button_name'>
-   <p >{state?.name}</p>
-   </div>
+        <div className='form'>
+            <h1 className='form-passed-test__title'>{nameTest}</h1>
+                <div className='form-passed-test__title__button'>
+                    <div className='form-passed-test__title__button_name'>
+                        <p >{state?.name}</p>
+                    </div>
  
-   <button className='form-passed-test__title__button_exit' onClick={()=>navigate("/result")}>Завершить просмотр</button> 
-
-       
-        </div>
-        <div className='body-form'>
-            {SeeNewTest()}
-            
-
-        </div>
-       
-        <div className='footer-form'>
-      
-        </div>
+                    <button className='form-passed-test__title__button_exit' onClick={()=>navigate("/result")}>Завершить просмотр</button> 
+                </div>
+            <div className='body-form'>
+                {SeeNewTest()}
+            </div>
         </div>
     )
 }
